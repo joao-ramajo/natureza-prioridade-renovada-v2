@@ -5,6 +5,9 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Request;
 
+/**
+ * @property \App\Models\CollectionPoint $resource
+ */
 class CollectionPointResource extends JsonResource
 {
     /**
@@ -15,21 +18,23 @@ class CollectionPointResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'id' => $this->uuid,
-            'name' => $this->name,
-            'category' => $this->category,
-            'status' => $this->status,
-            'address' => $this->address,
-            'city' => $this->city,
-            'state' => $this->state,
-            'lat' => $this->lat,
-            'lng' => $this->lng,
-            'created_by' => $this->whenLoaded('user', fn () => [
-                'name' => $this->user->name,
-                'email' => $this->user->email,
-            ]),
-            'created_at' => $this->created_at?->toISOString(),
-            'updated_at' => $this->updated_at?->toISOString(),
+            'id' => $this->resource->uuid,
+            'name' => $this->resource->name,
+            'category' => $this->resource->category,
+            'status' => $this->resource->status,
+            'address' => $this->resource->address,
+            'city' => $this->resource->city,
+            'state' => $this->resource->state,
+            'lat' => $this->resource->lat,
+            'lng' => $this->resource->lng,
+            'created_by' => $this->resource->relationLoaded('user')
+                    ? [
+                        'name'  => $this->resource->user->name,
+                        'email' => $this->resource->user->email,
+                    ]
+                    : null,
+            'created_at' => $this->resource->created_at->toISOString(),
+            'updated_at' => $this->resource->updated_at->toISOString(),
         ];
     }
 }

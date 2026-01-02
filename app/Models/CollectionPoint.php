@@ -4,8 +4,28 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Support\Str;
 
+/**
+ * @property int $id
+ * @property int $user_id
+ * @property string $uuid
+ * @property string $name
+ * @property string $status
+ * @property string $category
+ * @property string $address
+ * @property string $city
+ * @property string $state
+ * @property string $zip_code
+ * @property float|null $lat
+ * @property float|null $lng
+ * @property \Carbon\Carbon|null $approved_at
+ * @property \Carbon\Carbon|null $rejected_at
+ * @property \Carbon\Carbon $created_at
+ * @property \Carbon\Carbon $updated_at
+ * @property \App\Models\User $user
+ */
 class CollectionPoint extends Model
 {
     use HasFactory;
@@ -44,7 +64,7 @@ class CollectionPoint extends Model
         });
     }
 
-    public function user()
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }

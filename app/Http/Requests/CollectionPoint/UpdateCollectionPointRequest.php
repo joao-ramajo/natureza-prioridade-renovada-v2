@@ -31,13 +31,4 @@ class UpdateCollectionPointRequest extends FormRequest
             'zip_code' => ['sometimes', 'string', 'max:20'],
         ];
     }
-
-    protected function prepareForValidation(): void
-    {
-        if ($this->has('state')) {
-            $this->merge([
-                'state' => strtoupper($this->state),
-            ]);
-        }
-    }
 }
