@@ -14,7 +14,6 @@ class RegisterUserController extends Controller
 {
     public function __construct(
         protected readonly RegisterUser $registerUserAction,
-        // protected readonly Log $log, 
     ) {}
 
     public function handle(RegisterUserRequest $request)

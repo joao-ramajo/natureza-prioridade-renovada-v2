@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Action\Auth;
 
+use App\Events\UserCreated;
 use App\Exceptions\AuthException;
 use App\Models\User;
 use DomainException;
@@ -19,5 +20,7 @@ class RegisterUser
         }
 
         $user = User::create($data);
+
+        UserCreated::dispatch($user);
     }
 }
