@@ -6,6 +6,7 @@ use App\Action\CollectionPoint\CreateCollectionPointAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CollectionPoint\CreateCollectionPointRequest;
 use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CreateCollectionPointController extends Controller
 {
@@ -14,7 +15,7 @@ class CreateCollectionPointController extends Controller
     )
     {}
 
-    public function handle(CreateCollectionPointRequest $request)
+    public function handle(CreateCollectionPointRequest $request): JsonResponse
     {
         $data = $request->validated();
         $data['user_id'] = Auth::id();
