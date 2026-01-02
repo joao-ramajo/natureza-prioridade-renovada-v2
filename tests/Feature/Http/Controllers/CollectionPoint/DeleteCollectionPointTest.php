@@ -16,8 +16,6 @@ test('user can delete own collection point', function () {
     $response = $this->deleteJson(
         route('collection_points.delete', $collectionPoint->uuid)
     );
-    
-    $response->dump();
 
     $response
         ->assertOk()
