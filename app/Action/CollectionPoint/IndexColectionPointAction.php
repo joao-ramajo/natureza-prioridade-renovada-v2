@@ -4,7 +4,7 @@ namespace App\Action\CollectionPoint;
 
 use App\Models\CollectionPoint;
 
-class GetColectionPointAction
+class IndexColectionPointAction
 {
     public function execute(
         array $filters,
@@ -12,6 +12,8 @@ class GetColectionPointAction
         ?int $page = 1,
     ) {
         $query = CollectionPoint::query();
+
+        $query->with('user');
 
         if (!empty($filters['search'])) {
             $query->where('name', 'like', "%{$filters['search']}%");

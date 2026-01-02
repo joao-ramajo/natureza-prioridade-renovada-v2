@@ -24,6 +24,10 @@ class CollectionPointResource extends JsonResource
             'state' => $this->state,
             'lat' => $this->lat,
             'lng' => $this->lng,
+            'created_by' => $this->whenLoaded('user', fn () => [
+                'name' => $this->user->name,
+                'email' => $this->user->email,
+            ]),
             'created_at' => $this->created_at?->toISOString(),
             'updated_at' => $this->updated_at?->toISOString(),
         ];

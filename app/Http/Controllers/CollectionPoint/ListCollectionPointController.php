@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers\CollectionPoint;
 
-use App\Action\CollectionPoint\GetColectionPointAction;
+use App\Action\CollectionPoint\IndexColectionPointAction;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CollectionPointResource;
-use App\Models\CollectionPoint;
 use Illuminate\Http\Request;
 
 class ListCollectionPointController extends Controller
 {
     public function __construct(
-        protected readonly GetColectionPointAction $getCollectionPointsAction
+        protected readonly IndexColectionPointAction $indexCollectionPointsAction
     ){}
 
     public function handle(Request $request)
@@ -25,7 +24,7 @@ class ListCollectionPointController extends Controller
             'user_id',
         ]);
 
-        $collectionPoints = $this->getCollectionPointsAction->execute(
+        $collectionPoints = $this->indexCollectionPointsAction->execute(
             filters: $filters,
             perPage: $request->input('perPage'),
             page: $request->input('page')
