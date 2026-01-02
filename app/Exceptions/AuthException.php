@@ -12,4 +12,9 @@ class AuthException extends DomainException
     {
         return "Este email não está disponivel.";
     }
+
+    public static function invalidCredentials(): string
+    {
+        return "Credenciais inválidas.";
+    }
 }
