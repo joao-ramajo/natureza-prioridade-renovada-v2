@@ -19,5 +19,5 @@ Route::get('/auth/verify/{id}/{hash}', [EmailVerificationController::class, 'han
 Route::get('/collection-points', [ListCollectionPointController::class, 'handle'])->name('collection_points.list');
 Route::get('/collection-points/{uuid}', [GetCollectionPointController::class, 'handle'])->name('collection_points.find');
 Route::post('/collection-points', [CreateCollectionPointController::class, 'handle'])->name('collection_points.create')->middleware(['auth:sanctum', 'verified']);
-Route::delete('/collection-points/{uuid}', [DeleteCollectionPointController::class, 'handle'])->name('collection_points.delete')->middleware('auth:sanctum');
-Route::put('/collection-points/{uuid}', [UpdateCollectionPointController::class, 'handle'])->name('collection_points.update')->middleware('auth:sanctum');
+Route::delete('/collection-points/{uuid}', [DeleteCollectionPointController::class, 'handle'])->name('collection_points.delete')->middleware('auth:sanctum', 'verified');
+Route::put('/collection-points/{uuid}', [UpdateCollectionPointController::class, 'handle'])->name('collection_points.update')->middleware('auth:sanctum', 'verified');
