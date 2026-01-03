@@ -30,6 +30,10 @@ class CreateCollectionPointRequest extends FormRequest
             'state' => ['required', 'string', 'size:2'],
             'zip_code' => ['required', 'string', 'max:20'],
             'description' => ['nullable', 'string'],
+            'principal_image' => 'file|required',
+                    // Novos campos para múltiplas imagens
+            'images' => ['nullable', 'array'],           // o array de imagens
+            'images.*' => ['file', 'image'] // cada arquivo dentro do array
         ];
     }
 }

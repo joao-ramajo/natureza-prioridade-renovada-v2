@@ -20,6 +20,7 @@ class CollectionPointResource extends JsonResource
         return [
             'id' => $this->resource->uuid,
             'name' => $this->resource->name,
+            'principal_image' => $this->resource->principal_image,
             'category' => $this->resource->category,
             'status' => $this->resource->status,
             'address' => $this->resource->address,

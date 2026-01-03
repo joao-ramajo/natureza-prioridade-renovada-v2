@@ -4,8 +4,9 @@ namespace App\Models;
 
 use App\Enum\CollectionPointStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 /**
@@ -19,6 +20,7 @@ use Illuminate\Support\Str;
  * @property string $city
  * @property string $state
  * @property string $zip_code
+ * @property string $principal_image
  * @property float|null $lat
  * @property float|null $lng
  * @property \Carbon\Carbon|null $approved_at
@@ -47,6 +49,7 @@ class CollectionPoint extends Model
         'rejection_reason',
         'approved_at',
         'rejected_at',
+        'principal_image',
     ];
 
     protected $casts = [
@@ -69,6 +72,16 @@ class CollectionPoint extends Model
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(CollectionPointImage::class);
+    }
+
+    public function getPrincipalImageUrlAttribute(): ?string
+    {
+        return $this->principal_image ? asset('storage/' . $this->principal_image) : null;
     }
 
     public function scopeByUuid($query, string $uuid)

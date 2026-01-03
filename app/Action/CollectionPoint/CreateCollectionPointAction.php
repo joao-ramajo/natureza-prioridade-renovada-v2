@@ -8,7 +8,7 @@ use App\Models\CollectionPoint;
 
 class CreateCollectionPointAction
 {
-    public function execute(array $data)
+    public function execute(array $data): CollectionPoint
     {
         $data['status'] = CollectionPointStatus::PENDING;
 
