@@ -75,6 +75,10 @@
         ],
         "stan": [
             "vendor/bin/phpstan analyse -c phpstan.neon"
+        ],
+        "optimize": [
+            "./vendor/bin/sail php artisan optimize",
+            "./vendor/bin/sail php artisan queue:work"
         ]
     },
     "extra": {

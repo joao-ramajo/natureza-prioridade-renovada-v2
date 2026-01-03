@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enum\CollectionPointStatus;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -53,6 +54,7 @@ class CollectionPoint extends Model
         'lng' => 'decimal:7',
         'approved_at' => 'datetime',
         'rejected_at' => 'datetime',
+        'status' => CollectionPointStatus::class,
     ];
 
     protected static function booted(): void

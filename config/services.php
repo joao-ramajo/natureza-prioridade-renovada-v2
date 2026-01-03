@@ -14,6 +14,10 @@ return [
     |
     */
 
+    'npr' => [
+        'front_url' => env('FRONT_URL', 'http://localhost')
+    ],
+
     'postmark' => [
         'key' => env('POSTMARK_API_KEY'),
     ],
