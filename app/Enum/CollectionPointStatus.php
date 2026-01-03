@@ -6,7 +6,7 @@ enum CollectionPointStatus: string
 {
     case PENDING = 'avaliacao_pendente';
     case APPROVED = 'aprovado';
-    case REJECTED = 'rejeitado';
+    case REJECTED = 'reprovado';
 
     /**
      * Valores para validação (request / rule)
