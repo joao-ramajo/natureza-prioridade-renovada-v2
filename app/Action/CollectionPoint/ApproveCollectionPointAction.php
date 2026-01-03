@@ -18,7 +18,9 @@ class ApproveCollectionPointAction
         }
 
         $cp->update([
-            'status' => CollectionPointStatus::APPROVED
+            'status' => CollectionPointStatus::APPROVED,
+            'rejected_at' => null,
+            'rejection_reason' => null,
         ]);
 
         CollectionPointApproved::dispatch($cp);
