@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 /**
@@ -28,6 +29,7 @@ use Illuminate\Support\Str;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  * @property \App\Models\User $user
+ * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CollectionPointImage[] $images
  */
 class CollectionPoint extends Model
 {
@@ -67,12 +69,23 @@ class CollectionPoint extends Model
                 $model->uuid = (string) Str::uuid();
             }
         });
+
+        static::deleting(function (CollectionPoint $cp) {
+            if ($cp->principal_image) {
+                Storage::disk('public')->delete($cp->principal_image);
+            }
+
+            foreach ($cp->images as $image) {
+                Storage::disk('public')->delete($image->getImagePath());
+            }
+        });
     }
 
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
+
 
     public function images(): HasMany
     {
