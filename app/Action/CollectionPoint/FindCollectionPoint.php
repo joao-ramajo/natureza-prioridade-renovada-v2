@@ -8,8 +8,18 @@ use App\Models\CollectionPoint;
 
 class FindCollectionPoint
 {
-    public function execute(string $uuid): ?CollectionPoint
+    /**
+     * @param string $uuid
+     * @param bool $withImages
+     */
+    public function execute(string $uuid, bool $withImages = true): ?CollectionPoint
     {
-        return CollectionPoint::where('uuid', $uuid)->with('user:id,name,email', 'images')->first();
+        $cp = CollectionPoint::where('uuid', $uuid)->with('user:id,name,email')->first();
+
+        if ($withImages) {
+            $cp->load(['images']);
+        }
+
+        return $cp;
     }
 }

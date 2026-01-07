@@ -5,30 +5,55 @@ declare(strict_types=1);
 namespace App\Http\Controllers\CollectionPoint;
 
 use App\Action\CollectionPoint\ApproveCollectionPointAction;
+use App\Action\CollectionPoint\FindCollectionPoint;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CollectionPointResource;
+use App\Support\LogsWithContext;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Support\Facades\Auth;
+use Psr\Log\LoggerInterface;
 
 class ApproveCollectionPointController extends Controller
 {
+    use LogsWithContext;
+
     public function __construct(
-        protected readonly ApproveCollectionPointAction $approveCollectionPoint
+        protected readonly ApproveCollectionPointAction $approveCollectionPoint,
+        protected readonly FindCollectionPoint $findCollectionPoint,
+        protected readonly LoggerInterface $logger,
     ) {
     }
 
     public function __invoke(string $uuid)
     {
-        try {
-            $cp = $this->approveCollectionPoint->execute($uuid);
+        $this->logInfo('Iniciando requisição para aprovar ponto de coleta', [
+            'userId' => Auth::id(),
+            'collectionPointUuid' => $uuid,
+        ]);
+
+        $collectionPoint = $this->findCollectionPoint->execute(
+            uuid: $uuid,
+            withImages: false
+        );
+
+        if (!$collectionPoint) {
+            $this->logWarning('Ponto de coleta não encontrado', [
+                'userId' => Auth::id(),
+                'collectionPointUuid' => $uuid,
+            ]);
 
             return response()->json([
-                'message' => 'Ponto de coleta aprovado.',
-                'data' => new CollectionPointResource($cp)
-            ], 200);
-        } catch (ModelNotFoundException $e) {
-            return response()->json([
-                'message' => $e->getMessage()
+                'message' => 'Ponto não encontrado'
             ], 404);
         }
+
+        $this->approveCollectionPoint->execute(collectionPoint: $collectionPoint);
+
+        $this->logInfo('Fim da requisição');
+
+        return response()->json([
+            'message' => 'Ponto de coleta aprovado.',
+            'data' => new CollectionPointResource($collectionPoint)
+        ], 200);
     }
 }

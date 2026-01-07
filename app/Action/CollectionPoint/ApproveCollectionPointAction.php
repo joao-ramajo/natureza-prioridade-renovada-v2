@@ -7,26 +7,39 @@ namespace App\Action\CollectionPoint;
 use App\Enum\CollectionPointStatus;
 use App\Events\CollectionPointApproved;
 use App\Models\CollectionPoint;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Support\LogsWithContext;
+use Illuminate\Support\Facades\Auth;
+use Psr\Log\LoggerInterface;
 
 class ApproveCollectionPointAction
 {
-    public function execute(string $uuid): CollectionPoint
+    use LogsWithContext;
+
+    public function __construct(
+        protected readonly LoggerInterface $logger,
+    ) {
+    }
+
+    public function execute(CollectionPoint $collectionPoint): CollectionPoint
     {
-        $cp = CollectionPoint::where('uuid', $uuid)->first();
+        $this->logInfo('Iniciando processo de aprovação de um ponto de coleta', [
+            'userId' => Auth::id(),
+            'collectionPointId' => $collectionPoint->id
+        ]);
 
-        if (!$cp) {
-            throw new ModelNotFoundException('Ponto de coleta não encontrado.');
-        }
-
-        $cp->update([
+        $collectionPoint->update([
             'status' => CollectionPointStatus::APPROVED,
             'rejected_at' => null,
             'rejection_reason' => null,
         ]);
 
-        CollectionPointApproved::dispatch($cp);
+        CollectionPointApproved::dispatch($collectionPoint);
 
-        return $cp;
+        $this->logInfo('Ponto de coleta aprovado com sucesso', [
+            'userId' => Auth::id(),
+            'collectionPointId' => $collectionPoint->id
+        ]);
+
+        return $collectionPoint;
     }
 }
