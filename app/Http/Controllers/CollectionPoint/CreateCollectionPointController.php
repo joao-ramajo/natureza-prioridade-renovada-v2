@@ -42,7 +42,7 @@ class CreateCollectionPointController extends Controller
 
         $payload = [
             'message' => 'Ponto de coleta criado com sucesso.',
-            'collectionPoint_id' => $collectionPoint->uuid
+            'collection_point_id' => $collectionPoint->uuid
         ];
 
         $this->logInfo('Fim da requisição para criaçao de um ponto de coleta');

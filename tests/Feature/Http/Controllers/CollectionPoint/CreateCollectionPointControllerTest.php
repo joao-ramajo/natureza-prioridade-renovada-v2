@@ -25,7 +25,7 @@ test('authenticated user can create a collection point', function () {
         ->assertCreated()
         ->assertJsonStructure([
             'message',
-            'cp_id',
+            'collection_point_id',
         ]);
 
     $this->assertDatabaseHas('collection_points', [
