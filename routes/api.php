@@ -23,26 +23,7 @@ Route::post(
     LoginController::class
 )->name('auth.login');
 
-Route::get(
-    '/auth/verify/{id}/{hash}',
-    EmailVerificationController::class
-)->name('auth.verification.verify');
-
 // Collection Points
-Route::put(
-    '/collection-points/{uuid}/reprove',
-    ReproveCollectionPointController::class
-)
-    ->middleware(['auth:sanctum', 'verified'])
-    ->name('collection_points.reprove');
-
-Route::put(
-    '/collection-points/{uuid}/approve',
-    ApproveCollectionPointController::class
-)
-    ->middleware(['auth:sanctum', 'verified'])
-    ->name('collection_points.approve');
-
 Route::get(
     '/collection-points',
     ListCollectionPointController::class
@@ -53,23 +34,42 @@ Route::get(
     GetCollectionPointController::class
 )->name('collection_points.find');
 
+Route::get(
+    '/auth/verify/{id}/{hash}',
+    EmailVerificationController::class
+)->name('auth.verification.verify');
+
 Route::post(
     '/collection-points',
     CreateCollectionPointController::class
 )
-    ->middleware(['auth:sanctum', 'verified'])
-    ->name('collection_points.create');
+->middleware(['auth:sanctum', 'verified'])
+->name('collection_points.create');
 
-Route::delete(
-    '/collection-points/{uuid}',
-    DeleteCollectionPointController::class
+Route::put(
+    '/collection-points/{uuid}/reprove',
+    ReproveCollectionPointController::class
 )
-    ->middleware(['auth:sanctum', 'verified'])
-    ->name('collection_points.delete');
+->middleware(['auth:sanctum', 'verified'])
+->name('collection_points.reprove');
+
+Route::put(
+    '/collection-points/{uuid}/approve',
+    ApproveCollectionPointController::class
+)
+->middleware(['auth:sanctum', 'verified'])
+->name('collection_points.approve');
 
 Route::put(
     '/collection-points/{uuid}',
     UpdateCollectionPointController::class
 )
-    ->middleware(['auth:sanctum', 'verified'])
-    ->name('collection_points.update');
+->middleware(['auth:sanctum', 'verified'])
+->name('collection_points.update');
+
+Route::delete(
+    '/collection-points/{uuid}',
+    DeleteCollectionPointController::class
+)
+->middleware(['auth:sanctum', 'verified'])
+->name('collection_points.delete');
