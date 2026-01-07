@@ -40,10 +40,5 @@ class SendApprovedPointEmailToOwnerHandler implements ShouldQueue
             name: $collectionPoint->user->name,
             collectionPoint: $collectionPoint
         );
-
-        $this->logInfo('Envio de email disparado', [
-            'collectionPointId' => $collectionPoint->id,
-            'ownerEmail' => $collectionPoint->user->email,
-        ]);
     }
 }

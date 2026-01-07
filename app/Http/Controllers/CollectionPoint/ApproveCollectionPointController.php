@@ -9,7 +9,6 @@ use App\Action\CollectionPoint\FindCollectionPoint;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CollectionPointResource;
 use App\Support\LogsWithContext;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
 use Psr\Log\LoggerInterface;
 

@@ -2,31 +2,51 @@
 
 namespace App\Http\Controllers\CollectionPoint;
 
+use App\Action\CollectionPoint\FindCollectionPoint;
 use App\Action\CollectionPoint\ReproveCollectionPointAction;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CollectionPoint\ReproveCollectionPointRequest;
+use App\Support\LogsWithContext;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\Auth;
+use Psr\Log\LoggerInterface;
 
 class ReproveCollectionPointController extends Controller
 {
+    use LogsWithContext;
+
     public function __construct(
-        protected readonly ReproveCollectionPointAction $action
+        protected readonly ReproveCollectionPointAction $reproveCollectionPointAction,
+        protected readonly FindCollectionPoint $findCollectionPointAction,
+        protected readonly LoggerInterface $logger,
     ) {
     }
 
     public function __invoke(ReproveCollectionPointRequest $request, string $uuid): JsonResponse
     {
-        try {
-            $this->action->execute($uuid, $request->input('reason'));
+        $this->logInfo('Iniciando requisição para reprovação de um ponto de coleta', [
+            'userId' => Auth::id(),
+            'collectionPointUuid' => $uuid
+        ]);
 
-            return response()->json([
-                'message' => 'Ponto de coleta reprovado com sucesso.'
-            ], 200);
-        } catch (ModelNotFoundException $e) {
-            return response()->json([
-                'message' => $e->getMessage()
-            ], 404);
-        }
+        $collectionPoint = $this->findCollectionPointAction->execute(
+            uuid: $uuid,
+            withImages: false
+        );
+
+        $this->reproveCollectionPointAction->execute(
+            collectionPoint: $collectionPoint,
+            reason: $request->input('reason')
+        );
+
+        $this->logInfo('Fim da requisição de reprovação de ponto', [
+            'userId' => Auth::id(),
+            'collectionPointUuid' => $uuid
+        ]);
+
+        return response()->json([
+            'message' => 'Ponto de coleta reprovado com sucesso.'
+        ], 200);
     }
 }

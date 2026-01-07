@@ -7,24 +7,33 @@ namespace App\Action\CollectionPoint;
 use App\Enum\CollectionPointStatus;
 use App\Events\CollectionPointReproved;
 use App\Models\CollectionPoint;
+use App\Support\LogsWithContext;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Psr\Log\LoggerInterface;
 
 class ReproveCollectionPointAction
 {
-    public function execute(string $uuid, string $reason): void
+    use LogsWithContext;
+
+    public function __construct(
+        protected readonly LoggerInterface $logger,
+    ) {
+    }
+
+    public function execute(CollectionPoint $collectionPoint, string $reason): void
     {
-        $cp = CollectionPoint::where('uuid', $uuid)->first();
+        $this->logInfo('Iniciando processo para reprovação de um ponto de coleta', [
+            'collectionPointId' => $collectionPoint->id,
+        ]);
 
-        if (!$cp) {
-            throw new ModelNotFoundException('Ponto de coleta não encontrado.');
-        }
-
-        $cp->update([
+        $collectionPoint->update([
             'rejected_at' => now(),
             'rejection_reason' => $reason,
             'status' => CollectionPointStatus::REJECTED,
         ]);
 
-        CollectionPointReproved::dispatch($cp, $reason);
+        CollectionPointReproved::dispatch($collectionPoint, $reason);
+
+        $this->logInfo('Ponto de coleta reprovado');
     }
 }
