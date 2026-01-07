@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Action\Mail\CollectionPoint;
 
@@ -15,7 +17,8 @@ class SendReprovedPointEmailAction
 
     public function __construct(
         protected readonly LoggerInterface $logger,
-    ) {}
+    ) {
+    }
 
     public function execute(string $email, string $name, CollectionPoint $collectionPoint, string $reason): void
     {

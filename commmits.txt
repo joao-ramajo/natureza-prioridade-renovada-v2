@@ -1,0 +1,25 @@
+d9413b9 refactor(reproveCollectionPointEmail): adiciona logs e refatora fluxo de envio de email  sobre pontos reprovados
+0c861ba refactor(reproveCollectionPoint): adiciona logs e ajusta nomeclatura da rota de reprovação de ponto de coleta
+856c32e refactor(approvedCollectionPointEvent): adiciona logs para o evento de envio de email para ponto de coleta aprovado
+15195a1 refactor(approveCollectionPoint): adiciona logs para a rota de aprovação de ponto de coleta
+337354e feat(createCollectionPoint): adiciona logs para a criação de pontos de coleta
+45f2bb3 feat(routes): ajusta ordenação de rotas
+77ab957 feat(composer): adiciona script para rodar todas as ferramentas de análise e testes
+5646320 feat(quality): adiciona phpcs e ajusta código para passar pelas validações das seguintes ferramentes: phpstan, phpcs, pest
+926f710 feat(frontend): adiciona telas iniciais para visualização do fluxo do ponto de coleta
+81cd63d fix(phpstan): ajusta o código para as imagens do ponto de coleta para passar no phpstan
+1d643d2 feat(CollectionPointImages): adiciona campo para imagem principal e tabela de imagens para o ponto de coleta
+608a113 feat(ReprovePoint): adiciona rota e disparo de email para reprovar um ponto de coleta
+3454802 feat(ApprovePoint): adiciona rota para aprovação de um ponto de coleta e envio de email para o dono avisando sobre a atualização
+25b4796 feat(docker): adiciona laravel sail para docker do projeto e serviços de captação de email para desenvolvimento local
+f7c0e0a feat(emailVerify): adiciona rotas para verificação do email do usuário ao ser criado
+29e7798 feat(phpstan): adiciona e ajusta o projeto para respeitar o PHPSTAN
+7afe7c6 feat(UpdateCollectionPoint): adiciona rota para atualizar um ponto de coleta
+3900a7a feat(DeleteCollectionPoint): adiciona rota para deletar um ponto de coleta
+b7ed565 feat(GetCollectionPoint): adiciona rota para buscar um ponto de coleta especifico
+b70ad3f feat(ListCollectionPoint): adiciona rota para listagem do ponto de coleta
+a5917b3 feat(collectionPointControloller): adicoina rota para a criação de um ponto de coleta
+11163fe feat(collectionPointModel): adiciona classes model, factory e migrations para a entidade do ponto de coleta
+06c47a2 feat(login): adiciona rota para login
+d647d7e test(RegisterUser): adiciona testes de validação para a criação de um usuário
+f9cff88 feat(project): adiciona estrutura do projeto

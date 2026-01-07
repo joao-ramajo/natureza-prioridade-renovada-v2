@@ -27,15 +27,15 @@ class CreateCollectionPointAction
 
         $data['status'] = CollectionPointStatus::PENDING;
 
-        $cp = CollectionPoint::create($data);
+        $collectionPoint = CollectionPoint::create($data);
 
-        CollectionPointCreated::dispatch($cp);
+        CollectionPointCreated::dispatch($collectionPoint);
 
         $this->logInfo('Ponto de coleta criado com sucesso', [
-            'collectionPointId' => $cp->id,
-            'userId' => $cp->user_id,
+            'collectionPointId' => $collectionPoint->id,
+            'userId' => $collectionPoint->user_id,
         ]);
 
-        return $cp;
+        return $collectionPoint;
     }
 }

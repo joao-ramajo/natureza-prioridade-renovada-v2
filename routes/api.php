@@ -13,6 +13,11 @@ use App\Http\Controllers\CollectionPoint\UpdateCollectionPointController;
 use Illuminate\Support\Facades\Route;
 
 // Auth
+Route::get(
+    '/auth/verify/{id}/{hash}',
+    EmailVerificationController::class
+)->name('auth.verification.verify');
+
 Route::post(
     '/auth/register',
     RegisterUserController::class
@@ -33,11 +38,6 @@ Route::get(
     '/collection-points/{uuid}',
     GetCollectionPointController::class
 )->name('collection_points.find');
-
-Route::get(
-    '/auth/verify/{id}/{hash}',
-    EmailVerificationController::class
-)->name('auth.verification.verify');
 
 Route::post(
     '/collection-points',

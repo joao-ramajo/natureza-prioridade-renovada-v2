@@ -26,22 +26,23 @@ class CreateCollectionPointController extends Controller
 
     public function __invoke(CreateCollectionPointRequest $request): JsonResponse
     {
-        $this->logInfo('Início da requisição para criaçao de um ponto de coleta');
+        $this->logInfo('Inicia da requisição para criaçao de um ponto de coleta');
 
         $data = $request->validated();
+
         $data['user_id'] = Auth::id();
 
-        $cp = $this->createCollectionPointAction->execute($data);
+        $collectionPoint = $this->createCollectionPointAction->execute($data);
 
-        $this->uploadImageAction->execute($cp, $request->file('principal_image'));
+        $this->uploadImageAction->execute($collectionPoint, $request->file('principal_image'));
 
         if ($request->hasFile('images')) {
-            $this->addImagesAction->execute($cp, $request->file('images'));
+            $this->addImagesAction->execute($collectionPoint, $request->file('images'));
         }
 
         $payload = [
             'message' => 'Ponto de coleta criado com sucesso.',
-            'cp_id' => $cp->uuid
+            'collectionPoint_id' => $collectionPoint->uuid
         ];
 
         $this->logInfo('Fim da requisição para criaçao de um ponto de coleta');
