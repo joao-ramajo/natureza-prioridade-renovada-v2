@@ -12,7 +12,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 
-class ProcessCollectionPointImage implements ShouldQueue
+class ProcessCollectionPointImageJob implements ShouldQueue
 {
     use Dispatchable;
     use InteractsWithQueue;
@@ -36,7 +36,5 @@ class ProcessCollectionPointImage implements ShouldQueue
         ]);
 
         Storage::delete($this->tempPath);
-
-        Log::info('imagem processada');
     }
 }
