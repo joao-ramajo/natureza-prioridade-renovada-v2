@@ -4,27 +4,38 @@ namespace App\Listeners;
 
 use App\Action\Mail\CollectionPoint\SendReprovedPointEmailAction;
 use App\Events\CollectionPointReproved;
+use App\Support\LogsWithContext;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Psr\Log\LoggerInterface;
 
 class SendReprovedPointEmailToOwnerHandler implements ShouldQueue
 {
-    /**
-     * Create the event listener.
-     */
+    use LogsWithContext;
+
     public function __construct(
-        protected readonly SendReprovedPointEmailAction $action
+        protected readonly LoggerInterface $logger,
+        protected readonly SendReprovedPointEmailAction $sendReprovedPointEmailAction,
     ) {
-        //
     }
 
-    /**
-     * Handle the event.
-     */
     public function handle(CollectionPointReproved $event): void
     {
-        $cp = $event->collectionPoint;
-        $cp->load(['user']);
+        $collectionPoint = $event->collectionPoint;
+
+        $collectionPoint->load(['user']);
+
+        $this->logInfo('Evento recebido para enviar email para o criador do ponto', [
+            'collectionPointId' => $collectionPoint->id,
+            'ownerEmail' => $collectionPoint->user->email,
+        ]);
+
         $reason = $event->reason;
-        $this->action->execute($cp->user->email, $cp->user->name, $cp, $reason);
+
+        $this->sendReprovedPointEmailAction->execute(
+            email: $collectionPoint->user->email,
+            name: $collectionPoint->user->name,
+            collectionPoint: $collectionPoint,
+            reason: $reason
+        );
     }
 }

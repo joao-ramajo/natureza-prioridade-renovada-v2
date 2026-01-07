@@ -12,18 +12,12 @@ class SendApprovedPointEmailToOwnerHandler implements ShouldQueue
 {
     use LogsWithContext;
 
-    /**
-     * Create the event listener.
-     */
     public function __construct(
-        protected readonly SendApprovedPointEmailAction $sendApprovedPointEmailAction,
         protected readonly LoggerInterface $logger,
+        protected readonly SendApprovedPointEmailAction $sendApprovedPointEmailAction,
     ) {
     }
 
-    /**
-     * Handle the event.
-     */
     public function handle(CollectionPointApproved $event): void
     {
         $collectionPoint = $event->collectionPoint;
