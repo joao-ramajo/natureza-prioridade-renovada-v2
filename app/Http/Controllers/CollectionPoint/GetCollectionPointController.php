@@ -12,13 +12,14 @@ class GetCollectionPointController extends Controller
 {
     public function __construct(
         protected readonly FindCollectionPoint $findCollectionPointAction
-    ) {}
+    ) {
+    }
 
-    public function handle(string $uuid)
+    public function __invoke(string $uuid)
     {
         $cp = $this->findCollectionPointAction->execute($uuid);
 
-        if(!$cp){
+        if (!$cp) {
             return response()->json([
                 'message' => 'Ponto de coleta não encontrado.'
             ], 404);

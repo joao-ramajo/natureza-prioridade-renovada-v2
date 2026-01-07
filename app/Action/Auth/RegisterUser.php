@@ -15,7 +15,7 @@ class RegisterUser
     {
         $email = $data['email'];
 
-        if(User::where('email', $email)->exists()){
+        if (User::where('email', $email)->exists()) {
             throw new AuthException(AuthException::emailAlreadExists(), 422);
         }
 

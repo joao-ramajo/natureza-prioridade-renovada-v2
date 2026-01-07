@@ -12,9 +12,10 @@ class ReproveCollectionPointController extends Controller
 {
     public function __construct(
         protected readonly ReproveCollectionPointAction $action
-    ) {}
+    ) {
+    }
 
-    public function handle(ReproveCollectionPointRequest $request, string $uuid): JsonResponse
+    public function __invoke(ReproveCollectionPointRequest $request, string $uuid): JsonResponse
     {
         try {
             $this->action->execute($uuid, $request->input('reason'));

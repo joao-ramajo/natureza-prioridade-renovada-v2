@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<ruleset name="Laravel Project Standard">
+    <description>Padrão de código do projeto</description>
+
+    <!-- O que analisar -->
+    <file>app</file>
+    <file>routes</file>
+    <file>database</file>
+
+    <!-- O que ignorar -->
+    <exclude-pattern>vendor/*</exclude-pattern>
+    <exclude-pattern>storage/*</exclude-pattern>
+    <exclude-pattern>bootstrap/cache/*</exclude-pattern>
+    <exclude-pattern>app/Http/Resources/*</exclude-pattern>
+
+    <rule ref="PSR12" />
+
+</ruleset>

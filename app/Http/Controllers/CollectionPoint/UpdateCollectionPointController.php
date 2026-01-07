@@ -13,9 +13,10 @@ class UpdateCollectionPointController extends Controller
 {
     public function __construct(
         protected readonly UpdateCollectionPointAction $updateCollectionPointAction
-    ) {}
+    ) {
+    }
 
-    public function handle(UpdateCollectionPointRequest $request, string $uuid)
+    public function __invoke(UpdateCollectionPointRequest $request, string $uuid)
     {
         $collectionPoint = $this->updateCollectionPointAction->execute(
             uuid: $uuid,

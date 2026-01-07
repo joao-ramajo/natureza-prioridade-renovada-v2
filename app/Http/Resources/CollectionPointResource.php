@@ -40,6 +40,10 @@ class CollectionPointResource extends JsonResource
             'updated_at' => $this->resource->updated_at->toISOString(),
         ];
 
+        if ($this->relationLoaded('images')) {
+            $data['images'] = $this->resource->images;
+        }
+
         return $data;
     }
 }

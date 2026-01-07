@@ -12,7 +12,8 @@ class SendVerifiedEmailHandler implements ShouldQueue
 {
     public function __construct(
         protected SendVerifyEmailAction $sendEmailAction
-    ) {}
+    ) {
+    }
 
     public function handle(UserCreated $event): void
     {

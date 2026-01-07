@@ -11,7 +11,8 @@ use Illuminate\Queue\SerializesModels;
 
 class VerifyEmailMail extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     /**
      * Create a new message instance.
@@ -19,8 +20,7 @@ class VerifyEmailMail extends Mailable
     public function __construct(
         public string $name,
         public string $link
-    )
-    {
+    ) {
         //
     }
 

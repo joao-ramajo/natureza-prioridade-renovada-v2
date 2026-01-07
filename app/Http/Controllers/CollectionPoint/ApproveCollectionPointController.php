@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Http\Controllers\CollectionPoint;
 
@@ -11,9 +13,10 @@ class ApproveCollectionPointController extends Controller
 {
     public function __construct(
         protected readonly ApproveCollectionPointAction $approveCollectionPoint
-    ) {}
+    ) {
+    }
 
-    public function handle(string $uuid)
+    public function __invoke(string $uuid)
     {
         try {
             $cp = $this->approveCollectionPoint->execute($uuid);

@@ -10,9 +10,10 @@ class DeleteCollectionPointController extends Controller
 {
     public function __construct(
         protected readonly DeleteCollectionPointAction $deleteCollectionPointAction
-    ) {}
+    ) {
+    }
 
-    public function handle(string $uuid)
+    public function __invoke(string $uuid)
     {
         $deleted = $this->deleteCollectionPointAction->execute(
             uuid: $uuid,

@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Illuminate\Http\UploadedFile;
 
 test('authenticated user can create a collection point', function () {
     $user = User::factory()->create();
@@ -13,6 +14,7 @@ test('authenticated user can create a collection point', function () {
         'state' => 'PR',
         'zip_code' => '80020-310',
         'description' => 'Coleta de papel e plástico',
+        'principal_image' => UploadedFile::fake()->image('principal.jpg'),
     ];
 
     $response = $this

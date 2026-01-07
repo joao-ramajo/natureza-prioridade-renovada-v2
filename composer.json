@@ -24,7 +24,8 @@
         "nunomaduro/larastan": "^3.8",
         "pestphp/pest": "^4.3",
         "pestphp/pest-plugin-laravel": "^4.0",
-        "phpstan/phpstan": "^2.1"
+        "phpstan/phpstan": "^2.1",
+        "squizlabs/php_codesniffer": "^4.0"
     },
     "autoload": {
         "psr-4": {
@@ -79,6 +80,12 @@
         "optimize": [
             "./vendor/bin/sail php artisan optimize",
             "./vendor/bin/sail php artisan queue:work"
+        ],
+        "lint": [
+            "./vendor/bin/phpcs"
+        ],
+        "lint:fix": [
+            "./vendor/bin/phpcbf"
         ]
     },
     "extra": {

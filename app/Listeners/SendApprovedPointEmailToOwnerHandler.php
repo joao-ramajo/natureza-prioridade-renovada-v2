@@ -13,8 +13,8 @@ class SendApprovedPointEmailToOwnerHandler implements ShouldQueue
      */
     public function __construct(
         protected readonly SendApprovedPointEmailAction $action
-    )
-    {}
+    ) {
+    }
 
     /**
      * Handle the event.

@@ -14,12 +14,16 @@ use Illuminate\Support\Facades\Storage;
 
 class ProcessCollectionPointImage implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable;
+    use InteractsWithQueue;
+    use Queueable;
+    use SerializesModels;
 
     public function __construct(
         public readonly int $collectionPointId,
         public readonly string $tempPath
-    ) {}
+    ) {
+    }
 
     public function handle(): void
     {

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Action\CollectionPoint;
 
@@ -7,7 +9,7 @@ use App\Models\CollectionPoint;
 class IndexColectionPointAction
 {
     public function execute(
-        array $filters,
+        ?array $filters = [],
         ?int $perPage = 15,
         ?int $page = 1,
     ) {

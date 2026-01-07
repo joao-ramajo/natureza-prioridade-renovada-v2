@@ -16,9 +16,10 @@ class CreateCollectionPointController extends Controller
         protected readonly CreateCollectionPointAction $createCollectionPointAction,
         protected readonly UploadPrincipalImageAction $uploadImageAction,
         protected readonly AddCollectionPointImagesAction $addImagesAction,
-    ) {}
+    ) {
+    }
 
-    public function handle(CreateCollectionPointRequest $request): JsonResponse
+    public function __invoke(CreateCollectionPointRequest $request): JsonResponse
     {
         $data = $request->validated();
         $data['user_id'] = Auth::id();

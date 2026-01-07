@@ -11,7 +11,8 @@ use Illuminate\Queue\SerializesModels;
 
 class PointApprovedMail extends Mailable
 {
-    use Queueable, SerializesModels;
+    use Queueable;
+    use SerializesModels;
 
     /**
      * Create a new message instance.
@@ -20,8 +21,7 @@ class PointApprovedMail extends Mailable
         public readonly string $name,
         public readonly string $pointName,
         public readonly string $link,
-    )
-    {
+    ) {
         //
     }
 

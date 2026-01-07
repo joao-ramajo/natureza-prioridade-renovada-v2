@@ -11,9 +11,10 @@ class ListCollectionPointController extends Controller
 {
     public function __construct(
         protected readonly IndexColectionPointAction $indexCollectionPointsAction
-    ){}
+    ) {
+    }
 
-    public function handle(Request $request)
+    public function __invoke(Request $request)
     {
         $filters = $request->only([
             'search',

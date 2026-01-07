@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Http\Controllers\Auth;
 
@@ -14,9 +16,10 @@ class LoginController
 {
     public function __construct(
         protected readonly LoginAction $loginAction,
-    ) {}
+    ) {
+    }
 
-    public function handle(LoginRequest $request)
+    public function __invoke(LoginRequest $request)
     {
         try {
             $data = $this->loginAction->execute($request->validated());

@@ -13,14 +13,17 @@ use Illuminate\Queue\SerializesModels;
 
 class CollectionPointCreated
 {
-    use Dispatchable, InteractsWithSockets, SerializesModels;
+    use Dispatchable;
+    use InteractsWithSockets;
+    use SerializesModels;
 
     /**
      * Create a new event instance.
      */
     public function __construct(
         public readonly CollectionPoint $collectionPoint
-    ) {}
+    ) {
+    }
 
     /**
      * Get the channels the event should broadcast on.

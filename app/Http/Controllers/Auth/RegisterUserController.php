@@ -14,9 +14,10 @@ class RegisterUserController extends Controller
 {
     public function __construct(
         protected readonly RegisterUser $registerUserAction,
-    ) {}
+    ) {
+    }
 
-    public function handle(RegisterUserRequest $request)
+    public function __invoke(RegisterUserRequest $request)
     {
         try {
             $this->registerUserAction->execute($request->validated());
@@ -27,7 +28,7 @@ class RegisterUserController extends Controller
             return new JsonResponse([
                 'message' => $e->getMessage(),
             ], $e->getCode());
-        } catch(Exception $e){
+        } catch (Exception $e) {
             return new JsonResponse([
                 'message' => 'Erro interno do servidor.',
                 'error' => $e->getMessage(),

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Enum\CollectionPointStatus;
 use App\Models\CollectionPoint;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
@@ -18,11 +19,9 @@ class CollectionPointFactory extends Factory
         return [
             'user_id' => User::factory(),
             'name' => $this->faker->company . ' - Ponto de Coleta',
-            'status' => $this->faker->randomElement([
-                'pending',
-                'approved',
-                'rejected',
-            ]),
+            'status' => $this->faker->randomElement(
+                CollectionPointStatus::values()
+            ),
             'category' => $this->faker->randomElement([
                 'reciclagem',
                 'eletronicos',
@@ -40,6 +39,7 @@ class CollectionPointFactory extends Factory
             'rejection_reason' => null,
             'approved_at' => null,
             'rejected_at' => null,
+            'principal_image' => 'https://placehold.co/200x200',
         ];
     }
 
