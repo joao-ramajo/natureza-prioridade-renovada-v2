@@ -79,6 +79,7 @@
         ],
         "optimize": [
             "./vendor/bin/sail php artisan optimize",
+            "./vendor/bin/sail php artisan cache:clear",
             "./vendor/bin/sail php artisan queue:work"
         ],
         "lint": [

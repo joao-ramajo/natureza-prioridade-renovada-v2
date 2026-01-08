@@ -33,6 +33,14 @@ trait LogsWithContext
         );
     }
 
+    protected function debug(string $message, array $context = []): void
+    {
+        $this->logger->debug(
+            $this->formatMessage($message),
+            $context
+        );
+    }
+
     private function formatMessage(string $message): string
     {
         $message = trim($message);
