@@ -21,7 +21,7 @@ class CreateCollectionPointAction
 
     public function execute(array $data): CollectionPoint
     {
-        $this->logInfo('Inicio do processo de criação de um ponto de coleta', [
+        $this->info('Inicio do processo de criação de um ponto de coleta', [
             'userId' => $data['user_id']
         ]);
 
@@ -31,7 +31,7 @@ class CreateCollectionPointAction
 
         CollectionPointCreated::dispatch($collectionPoint);
 
-        $this->logInfo('Ponto de coleta criado com sucesso', [
+        $this->info('Ponto de coleta criado com sucesso', [
             'collectionPointId' => $collectionPoint->id,
             'userId' => $collectionPoint->user_id,
         ]);

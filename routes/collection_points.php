@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CollectionPoint\ApproveCollectionPointController;
+use App\Http\Controllers\CollectionPoint\ContestCollectionPointController;
 use App\Http\Controllers\CollectionPoint\CreateCollectionPointController;
 use App\Http\Controllers\CollectionPoint\DeleteCollectionPointController;
 use App\Http\Controllers\CollectionPoint\GetCollectionPointController;
@@ -39,6 +40,13 @@ Route::put(
 )
 ->middleware(['auth:sanctum', 'verified'])
 ->name('collection_points.approve');
+
+Route::put(
+    '/collection-points/{uuid}/contest',
+    ContestCollectionPointController::class
+)
+->middleware(['auth:sanctum', 'verified'])
+->name('collection_points.contest');
 
 Route::put(
     '/collection-points/{uuid}',

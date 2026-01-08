@@ -25,7 +25,7 @@ class ApproveCollectionPointController extends Controller
 
     public function __invoke(string $uuid)
     {
-        $this->logInfo('Iniciando requisição para aprovar ponto de coleta', [
+        $this->info('Iniciando requisição para aprovar ponto de coleta', [
             'userId' => Auth::id(),
             'collectionPointUuid' => $uuid,
         ]);
@@ -36,7 +36,7 @@ class ApproveCollectionPointController extends Controller
         );
 
         if (!$collectionPoint) {
-            $this->logWarning('Ponto de coleta não encontrado', [
+            $this->warning('Ponto de coleta não encontrado', [
                 'userId' => Auth::id(),
                 'collectionPointUuid' => $uuid,
             ]);
@@ -48,7 +48,7 @@ class ApproveCollectionPointController extends Controller
 
         $this->approveCollectionPoint->execute(collectionPoint: $collectionPoint);
 
-        $this->logInfo('Fim da requisição');
+        $this->info('Fim da requisição');
 
         return response()->json([
             'message' => 'Ponto de coleta aprovado.',

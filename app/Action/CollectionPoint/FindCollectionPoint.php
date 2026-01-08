@@ -17,7 +17,7 @@ class FindCollectionPoint
     {
         $cp = CollectionPoint::where('uuid', $uuid)->with('user:id,name,email')->first();
 
-        if(!$cp) {
+        if (!$cp) {
             throw new ModelNotFoundException('Ponto de coleta não encontrado.');
         }
 

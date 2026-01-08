@@ -26,7 +26,7 @@ class CreateCollectionPointController extends Controller
 
     public function __invoke(CreateCollectionPointRequest $request): JsonResponse
     {
-        $this->logInfo('Inicia da requisição para criaçao de um ponto de coleta');
+        $this->info('Inicia da requisição para criaçao de um ponto de coleta');
 
         $data = $request->validated();
 
@@ -45,7 +45,7 @@ class CreateCollectionPointController extends Controller
             'collection_point_id' => $collectionPoint->uuid
         ];
 
-        $this->logInfo('Fim da requisição para criaçao de um ponto de coleta');
+        $this->info('Fim da requisição para criaçao de um ponto de coleta');
 
         return response()->json($payload, 201);
     }

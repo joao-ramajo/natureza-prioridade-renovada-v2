@@ -9,7 +9,7 @@ trait LogsWithContext
 {
     protected readonly LoggerInterface $logger;
 
-    protected function logInfo(string $message, array $context = []): void
+    protected function info(string $message, array $context = []): void
     {
         $this->logger->info(
             $this->formatMessage($message),
@@ -17,7 +17,7 @@ trait LogsWithContext
         );
     }
 
-    protected function logWarning(string $message, array $context = []): void
+    protected function warning(string $message, array $context = []): void
     {
         $this->logger->warning(
             $this->formatMessage($message),
@@ -25,7 +25,7 @@ trait LogsWithContext
         );
     }
 
-    protected function logError(string $message, array $context = []): void
+    protected function error(string $message, array $context = []): void
     {
         $this->logger->error(
             $this->formatMessage($message),

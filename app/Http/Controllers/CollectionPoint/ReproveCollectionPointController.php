@@ -25,7 +25,7 @@ class ReproveCollectionPointController extends Controller
 
     public function __invoke(ReproveCollectionPointRequest $request, string $uuid): JsonResponse
     {
-        $this->logInfo('Iniciando requisição para reprovação de um ponto de coleta', [
+        $this->info('Iniciando requisição para reprovação de um ponto de coleta', [
             'userId' => Auth::id(),
             'collectionPointUuid' => $uuid
         ]);
@@ -40,7 +40,7 @@ class ReproveCollectionPointController extends Controller
             reason: $request->input('reason')
         );
 
-        $this->logInfo('Fim da requisição de reprovação de ponto', [
+        $this->info('Fim da requisição de reprovação de ponto', [
             'userId' => Auth::id(),
             'collectionPointUuid' => $uuid
         ]);

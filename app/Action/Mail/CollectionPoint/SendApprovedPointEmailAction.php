@@ -22,7 +22,7 @@ class SendApprovedPointEmailAction
 
     public function execute(string $email, string $name, CollectionPoint $collectionPoint): void
     {
-        $this->logInfo('Preparando email de aprovação para envio', [
+        $this->info('Preparando email de aprovação para envio', [
             'collectionPointId' => $collectionPoint->id,
             'ownerEmail' => $email,
         ]);
@@ -30,18 +30,18 @@ class SendApprovedPointEmailAction
         try {
             $link = config('services.npr.front_url') . '/ponto-de-coleta/' . $collectionPoint->uuid;
 
-            $this->logInfo('Link para o ponto gerado', [
+            $this->info('Link para o ponto gerado', [
                 'link' => $link,
             ]);
 
             Mail::to($email)->send(new PointApprovedMail($name, $collectionPoint->name, $link));
 
-            $this->logInfo('Email enviado com sucesso', [
-                   'collectionPointId' => $collectionPoint->id,
-                    'ownerEmail' => $email,
+            $this->info('Email enviado com sucesso', [
+                'collectionPointId' => $collectionPoint->id,
+                'ownerEmail' => $email,
             ]);
         } catch (Exception $e) {
-            $this->logError('Erro ao enviar email', [
+            $this->error('Erro ao enviar email', [
                 'messageError' => $e->getMessage(),
                 'ownerEmail' => $email,
             ]);

@@ -24,7 +24,7 @@ class SendReprovedPointEmailToOwnerHandler implements ShouldQueue
 
         $collectionPoint->load(['user']);
 
-        $this->logInfo('Evento recebido para enviar email para o criador do ponto', [
+        $this->info('Evento recebido para enviar email para o criador do ponto', [
             'collectionPointId' => $collectionPoint->id,
             'ownerEmail' => $collectionPoint->user->email,
         ]);

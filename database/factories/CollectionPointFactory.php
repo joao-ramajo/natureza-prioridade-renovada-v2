@@ -39,6 +39,9 @@ class CollectionPointFactory extends Factory
             'rejection_reason' => null,
             'approved_at' => null,
             'rejected_at' => null,
+            'contested_at' => null,
+            'contestation_deadline' => null,
+            'reevaluated_at' => null,
             'principal_image' => 'https://placehold.co/200x200',
         ];
     }

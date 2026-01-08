@@ -22,7 +22,7 @@ class ApproveCollectionPointAction
 
     public function execute(CollectionPoint $collectionPoint): void
     {
-        $this->logInfo('Iniciando processo de aprovação de um ponto de coleta', [
+        $this->info('Iniciando processo de aprovação de um ponto de coleta', [
             'collectionPointId' => $collectionPoint->id
         ]);
 
@@ -34,7 +34,7 @@ class ApproveCollectionPointAction
 
         CollectionPointApproved::dispatch($collectionPoint);
 
-        $this->logInfo('Ponto de coleta aprovado com sucesso', [
+        $this->info('Ponto de coleta aprovado com sucesso', [
             'collectionPointId' => $collectionPoint->id
         ]);
     }

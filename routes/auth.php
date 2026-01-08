@@ -20,4 +20,3 @@ Route::post(
     '/auth/login',
     LoginController::class
 )->name('auth.login');
-

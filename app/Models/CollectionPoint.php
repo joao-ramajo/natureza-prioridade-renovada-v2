@@ -15,7 +15,7 @@ use Illuminate\Support\Str;
  * @property int $user_id
  * @property string $uuid
  * @property string $name
- * @property string $status
+ * @property CollectionPointStatus $status
  * @property string $category
  * @property string $address
  * @property string $city
@@ -28,6 +28,9 @@ use Illuminate\Support\Str;
  * @property \Carbon\Carbon|null $rejected_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @property \Carbon\Carbon|null $contested_at
+ * @property \Carbon\Carbon|null $contestation_deadline
+ * @property \Carbon\Carbon|null $reevaluated_at
  * @property \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection|\App\Models\CollectionPointImage[] $images
  */
@@ -52,6 +55,9 @@ class CollectionPoint extends Model
         'approved_at',
         'rejected_at',
         'principal_image',
+        'contested_at',
+        'contestation_deadline',
+        'reevaluated_at',
     ];
 
     protected $casts = [
@@ -59,6 +65,9 @@ class CollectionPoint extends Model
         'lng' => 'decimal:7',
         'approved_at' => 'datetime',
         'rejected_at' => 'datetime',
+        'contested_at' => 'datetime',
+        'contestation_deadline' => 'datetime',
+        'reevaluated_at' => 'datetime',
         'status' => CollectionPointStatus::class,
     ];
 

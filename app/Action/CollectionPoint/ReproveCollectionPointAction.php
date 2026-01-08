@@ -22,7 +22,7 @@ class ReproveCollectionPointAction
 
     public function execute(CollectionPoint $collectionPoint, string $reason): void
     {
-        $this->logInfo('Iniciando processo para reprovação de um ponto de coleta', [
+        $this->info('Iniciando processo para reprovação de um ponto de coleta', [
             'collectionPointId' => $collectionPoint->id,
         ]);
 
@@ -34,6 +34,6 @@ class ReproveCollectionPointAction
 
         CollectionPointReproved::dispatch($collectionPoint, $reason);
 
-        $this->logInfo('Ponto de coleta reprovado');
+        $this->info('Ponto de coleta reprovado');
     }
 }
