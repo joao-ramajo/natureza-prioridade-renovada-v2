@@ -5,7 +5,6 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterUserController;
 use Illuminate\Support\Facades\Route;
 
-// Auth
 Route::get(
     '/auth/verify/{id}/{hash}',
     EmailVerificationController::class

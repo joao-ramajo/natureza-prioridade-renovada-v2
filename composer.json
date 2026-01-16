@@ -88,7 +88,7 @@
         "lint:fix": [
             "./vendor/bin/phpcbf"
         ],
-        "quality": [
+        "qa": [
             "./vendor/bin/phpstan",
             "./vendor/bin/phpcs",
             "./vendor/bin/pest"
