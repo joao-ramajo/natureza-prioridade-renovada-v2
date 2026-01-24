@@ -1,0 +1,57 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    container_name: npr-app
+    volumes:
+      - app_public:/var/www/public
+      - ./.env:/var/www/.env
+    env_file:
+      - .env
+    depends_on:
+      - mysql
+    networks:
+      - npr-network
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:alpine
+    container_name: npr-nginx
+    ports:
+      - "8081:80"
+      - "8444:443"
+    volumes:
+      - app_public:/var/www/public:ro
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - app
+    networks:
+      - npr-network
+    restart: unless-stopped
+
+  mysql:
+    image: mysql:8.0
+    container_name: npr-db
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data_npr:/var/lib/mysql
+    networks:
+      - npr-network
+    restart: unless-stopped
+
+volumes:
+  mysql_data_npr:
+  app_public:
+
+networks:
+  npr-network:
+    driver: bridge
