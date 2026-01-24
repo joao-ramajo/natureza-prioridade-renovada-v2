@@ -21,7 +21,7 @@ services:
     image: nginx:alpine
     container_name: npr-nginx
     ports:
-      - "8081:80"
+      - "8083:80"
       - "8444:443"
     volumes:
       - app_public:/var/www/public:ro
@@ -41,7 +41,7 @@ services:
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
     ports:
-      - "3307:3306"
+      - "3309:3306"
     volumes:
       - mysql_data_npr:/var/lib/mysql
     networks:
