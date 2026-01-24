@@ -11,7 +11,7 @@ servers:
     description: Servidor de produção
 
 paths:
-  /auth/register:
+  /api/auth/register:
     post:
       summary: Registrar novo usuário
       description: Cria uma nova conta de usuário no sistema
