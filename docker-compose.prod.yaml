@@ -22,7 +22,7 @@ services:
     container_name: npr-nginx
     ports:
       - "8083:80"
-      - "8444:443"
+      - "8446:443"
     volumes:
       - app_public:/var/www/public:ro
       - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
