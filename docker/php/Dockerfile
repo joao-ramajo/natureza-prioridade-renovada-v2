@@ -64,7 +64,7 @@ RUN mkdir -p public/build
 COPY --from=composer --chown=www-data:www-data /app/vendor vendor
 COPY --from=node --chown=www-data:www-data /app/public/build public/build
 
-COPY public/docs /var/www/public/docs
+COPY --chown=www-data:www-data public/docs public/docs
 
 # Permissões
 RUN chown -R www-data:www-data storage bootstrap/cache public/build \
