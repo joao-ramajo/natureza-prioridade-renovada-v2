@@ -9,3 +9,7 @@ Route::get('/', function () {
         'title' => 'NPR',
     ]);
 });
+
+Route::get('/api/docs', function () {
+    return view('api-docs');
+});

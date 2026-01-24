@@ -1,0 +1,94 @@
+openapi: 3.0.0
+info:
+  title: Natureza Prioridade Renovada API
+  version: 1.0.0
+  description: API do projeto Natureza Prioridade Renovada
+
+servers:
+  - url: http://localhost:8000
+    description: Servidor local
+  - url: https://api.exemplo.com
+    description: Servidor de produção
+
+paths:
+  /auth/register:
+    post:
+      summary: Registrar novo usuário
+      description: Cria uma nova conta de usuário no sistema
+      tags:
+        - Autenticação
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - name
+                - email
+                - password
+                - password_confirmation
+              properties:
+                name:
+                  type: string
+                  description: Nome completo do usuário
+                  example: João Silva
+                email:
+                  type: string
+                  format: email
+                  description: Email do usuário
+                  example: joao.silva@email.com
+                password:
+                  type: string
+                  format: password
+                  description: Senha do usuário
+                  example: senha123
+                password_confirmation:
+                  type: string
+                  format: password
+                  description: Confirmação da senha
+                  example: senha123
+      responses:
+        '200':
+          description: Usuário criado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Conta registrada com sucesso !
+        '422':
+          description: Erro de validação
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Os dados fornecidos são inválidos
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        items:
+                          type: string
+                        example: ["O campo email deve ser um endereço de email válido"]
+                      password:
+                        type: array
+                        items:
+                          type: string
+                        example: ["O campo password de confirmação não confere"]
+        '500':
+          description: Erro interno do servidor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Erro ao processar requisição
