@@ -49,7 +49,7 @@ paths:
                   description: Confirmação da senha
                   example: senha123
       responses:
-        '200':
+        '201':
           description: Usuário criado com sucesso
           content:
             application/json:
@@ -92,3 +92,81 @@ paths:
                   message:
                     type: string
                     example: Erro ao processar requisição
+  /api/auth/login:
+      post:
+        summary: Login
+        description: Realiza o login do usuário
+        tags:
+          - Autenticação
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                type: object
+                required:
+                  - email
+                  - password
+                properties:
+                  email:
+                    type: string
+                    format: email
+                    description: Email registrado
+                    example: johndoe@gmail.com
+                  password:
+                    type: string
+                    format: password
+                    description: Senha do usuário
+                    example: senha123
+        responses:
+          '200':
+            description: Login realizado com sucesso
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    access_token:
+                      type: string
+                      example: 2|l07tH7G1uMEdXYn1IP4sHCiE3le7pZV82dNhy6E681dc1bbc
+                    token_type:
+                      type: string
+                      example: Bearer
+                    user:
+                      type: object
+                      properties:
+                        email:
+                          type: string
+                          format: email
+                          example: john.doe@gmail.com
+                        name:
+                          type: string
+                          example: John Doe
+          '401':
+            description: Credenciais inválidas
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      example: Credenciais inválidas
+          '422':
+            description: Erro de validação
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                      example: Os dados fornecidos são inválidos
+                    errors:
+                      type: object
+                      properties:
+                        email:
+                          type: array
+                          items:
+                            type: string
+                          example: ["O campo email é obrigatório"]
