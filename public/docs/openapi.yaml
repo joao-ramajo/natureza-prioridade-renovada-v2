@@ -170,3 +170,101 @@ paths:
                           items:
                             type: string
                           example: ["O campo email é obrigatório"]
+  /api/collection-points:
+    post:
+      summary: Criar ponto de coleta
+      description: Cria um novo ponto de coleta com imagem principal e imagens adicionais
+      tags:
+        - Pontos de Coleta
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - name
+                - category
+                - address
+                - city
+                - state
+                - zip_code
+                - principal_image
+              properties:
+                name:
+                  type: string
+                  maxLength: 255
+                  example: Ponto Verde Central
+                category:
+                  type: string
+                  maxLength: 100
+                  example: Reciclagem
+                address:
+                  type: string
+                  maxLength: 255
+                  example: Rua das Flores, 123
+                city:
+                  type: string
+                  maxLength: 100
+                  example: São Paulo
+                state:
+                  type: string
+                  minLength: 2
+                  maxLength: 2
+                  example: SP
+                zip_code:
+                  type: string
+                  maxLength: 20
+                  example: 01000-000
+                description:
+                  type: string
+                  nullable: true
+                  example: Ponto de coleta para materiais recicláveis
+                principal_image:
+                  type: string
+                  format: binary
+                  description: Imagem principal do ponto de coleta
+                images:
+                  type: array
+                  nullable: true
+                  description: Imagens adicionais do ponto de coleta
+                  items:
+                    type: string
+                    format: binary
+      responses:
+        '201':
+          description: Ponto de coleta criado com sucesso
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Ponto de coleta criado com sucesso.
+                  collection_point_id:
+                    type: string
+                    format: uuid
+                    example: 550e8400-e29b-41d4-a716-446655440000
+        '422':
+          description: Erro de validação
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Os dados fornecidos são inválidos
+                  errors:
+                    type: object
+        '500':
+          description: Erro interno do servidor
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                    example: Erro ao processar requisição
