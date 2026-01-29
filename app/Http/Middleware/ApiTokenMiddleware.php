@@ -55,6 +55,8 @@ class ApiTokenMiddleware
 
     private function isDevelopment(): bool
     {
-        return app()->environment() === 'local';
+        $ignoredEnvironments = ['local', 'testing'];
+
+        return in_array(app()->environment(), $ignoredEnvironments, true);
     }
 }

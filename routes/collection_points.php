@@ -24,40 +24,40 @@ Route::post(
     '/collection-points',
     CreateCollectionPointController::class
 )
-->middleware(['auth:sanctum', 'verified'])
+->middleware(['auth:sanctum'])
 ->name('collection_points.create');
 
 Route::put(
     '/collection-points/{uuid}/reprove',
     ReproveCollectionPointController::class
 )
-->middleware(['auth:sanctum', 'verified'])
+->middleware(['auth:sanctum'])
 ->name('collection_points.reprove');
 
 Route::put(
     '/collection-points/{uuid}/approve',
     ApproveCollectionPointController::class
 )
-->middleware(['auth:sanctum', 'verified'])
+->middleware(['auth:sanctum'])
 ->name('collection_points.approve');
 
 Route::put(
     '/collection-points/{uuid}/contest',
     ContestCollectionPointController::class
 )
-->middleware(['auth:sanctum', 'verified'])
+->middleware(['auth:sanctum'])
 ->name('collection_points.contest');
 
 Route::put(
     '/collection-points/{uuid}',
     UpdateCollectionPointController::class
 )
-->middleware(['auth:sanctum', 'verified'])
+->middleware(['auth:sanctum'])
 ->name('collection_points.update');
 
 Route::delete(
     '/collection-points/{uuid}',
     DeleteCollectionPointController::class
 )
-->middleware(['auth:sanctum', 'verified'])
+->middleware(['auth:sanctum'])
 ->name('collection_points.delete');

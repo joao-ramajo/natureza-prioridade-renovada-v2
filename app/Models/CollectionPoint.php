@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enum\CollectionPointStatus;
+use Domain\ZipCode;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -74,7 +75,7 @@ class CollectionPoint extends Model
     protected static function booted(): void
     {
         static::creating(function (self $model) {
-            if (empty($model->uuid)) {
+            if (!$model->uuid) {
                 $model->uuid = (string) Str::uuid();
             }
         });
