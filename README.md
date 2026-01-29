@@ -1,76 +1,247 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# 🌱 NPR - Natureza Prioridade Renovada
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+> API para cadastro e consulta de pontos de coleta de lixo, promovendo a reciclagem e a sustentabilidade
 
-## About Laravel
+[![Laravel](https://img.shields.io/badge/Laravel-12-FF2D20?style=flat&logo=laravel&logoColor=white)](https://laravel.com)
+[![PHP](https://img.shields.io/badge/PHP-8.2+-777BB4?style=flat&logo=php&logoColor=white)](https://php.net)
+[![Pest](https://img.shields.io/badge/Tested_with-Pest-FF4088?style=flat)](https://pestphp.com)
+[![Swagger](https://img.shields.io/badge/API_Docs-Swagger-85EA2D?style=flat&logo=swagger&logoColor=black)](https://swagger.io)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+[🌐 API em Produção](http://npr.salgadinhos-web.blog/) | [📖 Documentação OpenAPI](http://npr.salgadinhos-web.blog/api/docs)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 📖 Sobre o Projeto
 
-## Learning Laravel
+**NPR (Natureza Prioridade Renovada)** é uma API RESTful que centraliza informações sobre pontos de coleta de lixo em diversas localidades. O projeto nasceu de um trabalho de conclusão de curso técnico e evoluiu para uma iniciativa que visa **aumentar a visibilidade da importância da reciclagem** através da tecnologia.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+### 🎯 Problema Resolvido
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Disponibiliza uma plataforma centralizada onde:
+- 📍 Pontos de coleta podem ser cadastrados com informações detalhadas
+- 🗺️ Usuários podem localizar pontos de coleta próximos
+- ✅ Administradores podem moderar e validar as informações
+- 🌍 A comunidade pode contribuir com dados sobre reciclagem
 
-## Laravel Sponsors
+### 💚 Impacto Social
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Ao facilitar o acesso a informações sobre pontos de coleta, o NPR contribui para:
+- Redução do descarte inadequado de resíduos
+- Aumento da taxa de reciclagem
+- Conscientização ambiental
+- Economia circular
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## ✨ Principais Funcionalidades
 
-## Contributing
+| Funcionalidade | Descrição |
+|----------------|-----------|
+| 📝 **Cadastro de Pontos** | Criação de pontos de coleta com informações detalhadas e imagens |
+| ✅ **Sistema de Aprovação** | Moderação de pontos cadastrados (aprovação/reprovação) |
+| 🔍 **Listagem Inteligente** | Consulta e filtro de pontos de coleta por diversos critérios |
+| 🔄 **Atualizações** | Edição de informações de pontos existentes |
+| 📸 **Galeria de Imagens** | Suporte para múltiplas imagens por ponto de coleta |
+| 🔐 **Autenticação** | Sistema seguro via Laravel Sanctum |
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+---
 
-## Code of Conduct
+## 🛠️ Tecnologias Utilizadas
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Este projeto foi construído com as melhores práticas e tecnologias modernas:
 
-## Security Vulnerabilities
+### Core
+- **[Laravel 12](https://laravel.com)** - Framework PHP elegante e poderoso
+- **[MySQL](https://www.mysql.com)** - Banco de dados relacional
+- **[Laravel Sanctum](https://laravel.com/docs/sanctum)** - Autenticação de API segura
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Ferramentas de Desenvolvimento
+- **[Swagger API](https://swagger.io)** - Documentação interativa da API
+- **[PHPStan](https://phpstan.org)** - Análise estática de código
+- **[PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)** - Padrões de código (PSR)
+- **[Pest](https://pestphp.com)** - Framework de testes moderno
 
-## License
+### Arquitetura
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+- **Tipo**: Monolito Modular
+- **Padrão**: Domain-Driven Design (DDD)
+- **Organização**: Separação por módulos (`CollectionPoints`, `Auth`, etc.)
+- **Princípios**: Clean Code, PSR Standards
 
-server {
-    listen 80;
-    server_name npr.salgadinhos-web.blog;
+---
 
-    location / {
-        proxy_pass http://localhost:5000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
-        proxy_cache_bypass $http_upgrade;
-    }
-}
+## 🚀 Como Começar
+
+### Pré-requisitos
+
+- [PHP 8.2+](https://www.php.net/downloads)
+- [Composer](https://getcomposer.org/)
+- [Docker](https://www.docker.com/get-started) (para Laravel Sail)
+
+### Instalação
+
+1. **Clone o repositório**
+```bash
+git clone https://github.com/joao-ramajo/natureza-prioridade-renovada-v2.git
+cd npr-api
+```
+
+2. **Instale as dependências**
+```bash
+composer install
+```
+
+3. **Configure o ambiente**
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+**⚠️ Importante**: Configure a variável de ambiente:
+```env
+APP_LOCALE=pt_BR
+```
+
+4. **Suba os containers Docker**
+```bash
+./vendor/bin/sail up -d
+```
+
+5. **Execute as migrations**
+```bash
+./vendor/bin/sail artisan migrate
+```
+
+6. **Acesse a documentação da API**
+```
+http://localhost/api/documentation
+```
+
+### Comandos Úteis
+
+```bash
+# Rodar o projeto em desenvolvimento
+./vendor/bin/sail up -d
+
+# Parar o projeto
+./vendor/bin/sail down
+
+# Executar testes
+./vendor/bin/sail artisan test
+
+# Análise estática de código
+./vendor/bin/sail composer phpstan
+
+# Verificar padrões de código
+./vendor/bin/sail composer phpcs
+```
+
+---
+
+## 💡 Como Usar a API
+
+### 🔑 Autenticação
+
+Para consumir a API, você precisa de um token de acesso. 
+
+**Como solicitar acesso:**
+- Entre em contato via [LinkedIn: /joao-ramajo](https://linkedin.com/in/joao-ramajo)
+- Informe o propósito de uso da API
+- Receba suas credenciais de acesso
+
+### 📚 Documentação
+
+A documentação completa da API está disponível via OpenAPI/Swagger:
+
+**Produção**: [http://npr.salgadinhos-web.blog/api/docs](http://npr.salgadinhos-web.blog/api/docs)
+
+**Local**: `http://localhost/api/documentation`
+
+---
+
+## 🧪 Testes
+
+O projeto utiliza **Pest** para testes de integração.
+
+```bash
+# Executar todos os testes
+./vendor/bin/sail artisan test
+
+# Executar testes com cobertura
+./vendor/bin/sail artisan test --coverage
+```
+
+**Status atual**: Cobertura básica focada nos fluxos principais da aplicação.
+
+---
+
+## 📈 Status do Projeto
+
+**Status Atual**: 🚧 Em Desenvolvimento Ativo
+
+O projeto possui funcionalidades mínimas operacionais e está em constante evolução.
+
+### 🗺️ Roadmap
+
+Próximas funcionalidades planejadas:
+
+- [ ] **Sistema de Aprovação Aprimorado**
+  - Notificações para criadores de pontos
+  - Histórico de moderação
+
+- [ ] **Melhorias na Listagem**
+  - Busca por geolocalização (pontos próximos)
+  - Filtros avançados (tipo de resíduo, horário, etc.)
+  - Ordenação por relevância
+
+- [ ] **Recursos Adicionais**
+  - Sistema de avaliações e comentários
+  - Estatísticas de reciclagem
+  - Gamificação para incentivar contribuições
+
+---
+
+## 🤝 Contribuições
+
+Contribuições são bem-vindas! Este projeto segue:
+
+### Padrões de Código
+- **PSR-12** - Padrão de estilo de código PHP
+- **Clean Code** - Princípios de código limpo
+- **DDD** - Domain-Driven Design
+
+### Como Contribuir
+
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/MinhaFeature`)
+3. Siga os padrões de código (realize as análises de código antes de commitar)
+4. Escreva testes para novas funcionalidades
+5. Commit suas mudanças (`git commit -m 'feat: Adiciona MinhaFeature'`)
+6. Push para a branch (`git push origin feature/MinhaFeature`)
+7. Abra um Pull Request
+
+### Reportar Bugs
+
+Encontrou um bug? Abra uma [issue](https://github.com/seu-usuario/npr-api/issues) detalhando:
+- Descrição do problema
+- Passos para reproduzir
+- Comportamento esperado vs. atual
+- Ambiente (OS, versão do PHP, etc.)
+
+---
+
+
+## 🔗 Links Úteis
+
+- **API em Produção**: [http://npr.salgadinhos-web.blog/](http://npr.salgadinhos-web.blog/)
+- **Documentação OpenAPI**: [http://npr.salgadinhos-web.blog/api/docs](http://npr.salgadinhos-web.blog/api/docs)
+- **Documentação do Laravel**: [https://laravel.com/docs](https://laravel.com/docs)
+- **Laravel Sanctum**: [https://laravel.com/docs/sanctum](https://laravel.com/docs/sanctum)
+- **Pest PHP**: [https://pestphp.com](https://pestphp.com)
+- **Swagger/OpenAPI**: [https://swagger.io](https://swagger.io)
+
+---
+
+## 🌍 Contribua para um Mundo Mais Verde
+
+Este projeto é mais do que código - é uma ferramenta para **transformação ambiental**. Ao usar, contribuir ou divulgar o NPR, você está ajudando a construir um futuro mais sustentável.

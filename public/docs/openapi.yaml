@@ -268,3 +268,195 @@ paths:
                   message:
                     type: string
                     example: Erro ao processar requisição
+    get:
+      summary: Lista pontos de coleta
+      description: Retorna pontos de coleta com filtros opcionais e paginação
+      operationId: listCollectionPoints
+      tags:
+        - Pontos de Coleta
+      parameters:
+        - in: query
+          name: search
+          schema:
+            type: string
+          description: Filtra pelo nome ou descrição do ponto
+        - in: query
+          name: city
+          schema:
+            type: string
+          description: Filtra pela cidade
+        - in: query
+          name: state
+          schema:
+            type: string
+          description: Filtra pelo estado
+        - in: query
+          name: status
+          schema:
+            type: string
+          description: Filtra pelo status do ponto
+        - in: query
+          name: category
+          schema:
+            type: string
+          description: Filtra pela categoria
+        - in: query
+          name: page
+          schema:
+            type: integer
+            default: 1
+            minimum: 1
+          description: Página atual
+        - in: query
+          name: perPage
+          schema:
+            type: integer
+            default: 15
+            minimum: 1
+          description: Quantidade de itens por página
+      responses:
+        '200':
+          description: Lista paginada de pontos de coleta
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  current_page:
+                    type: integer
+                  data:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/CollectionPoint'
+                  first_page_url:
+                    type: string
+                  from:
+                    type: integer
+                    nullable: true
+                  last_page:
+                    type: integer
+                  last_page_url:
+                    type: string
+                  links:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/PaginationLink'
+                  next_page_url:
+                    type: string
+                    nullable: true
+                  path:
+                    type: string
+                  per_page:
+                    type: integer
+                  prev_page_url:
+                    type: string
+                    nullable: true
+                  to:
+                    type: integer
+                    nullable: true
+                  total:
+                    type: integer
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        email:
+          type: string
+        email_verified_at:
+          type: string
+          format: date-time
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+
+    CollectionPoint:
+      type: object
+      properties:
+        id:
+          type: integer
+        uuid:
+          type: string
+          format: uuid
+        user_id:
+          type: integer
+        name:
+          type: string
+        principal_image:
+          type: string
+        status:
+          type: string
+        category:
+          type: string
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        zip_code:
+          type: string
+        description:
+          type: string
+          nullable: true
+        lat:
+          type: number
+          format: float
+          nullable: true
+        lng:
+          type: number
+          format: float
+          nullable: true
+        rejection_reason:
+          type: string
+          nullable: true
+        approved_at:
+          type: string
+          format: date-time
+          nullable: true
+        rejected_at:
+          type: string
+          format: date-time
+          nullable: true
+        contested_at:
+          type: string
+          format: date-time
+          nullable: true
+        contestation_deadline:
+          type: string
+          format: date-time
+          nullable: true
+        reevaluated_at:
+          type: string
+          format: date-time
+          nullable: true
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        user:
+          $ref: '#/components/schemas/User'
+
+    PaginationLink:
+      type: object
+      properties:
+        url:
+          type: string
+          nullable: true
+        label:
+          type: string
+        page:
+          type: integer
+          nullable: true
+        active:
+          type: boolean

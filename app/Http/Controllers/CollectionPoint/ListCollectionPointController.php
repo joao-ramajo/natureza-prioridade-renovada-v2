@@ -29,8 +29,9 @@ class ListCollectionPointController extends Controller
             filters: $filters,
             perPage: $request->input('perPage'),
             page: $request->input('page')
-        );
+        )->toArray();
 
-        return CollectionPointResource::collection($collectionPoints);
+        return response()
+            ->json($collectionPoints);
     }
 }

@@ -71,6 +71,10 @@ RUN chown -R www-data:www-data storage bootstrap/cache public/build \
     && chmod -R 755 /var/www \
     && chmod -R 775 storage bootstrap/cache
 
+RUN mkdir -p storage/app/public
+
+RUN php artisan storage:link || true
+
 EXPOSE 9000
 
 CMD ["php-fpm"]

@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace App\Action\CollectionPoint;
 
@@ -45,11 +43,13 @@ class IndexColectionPointAction
             $query->where('user_id', $filters['user_id']);
         }
 
-        return $query
+        $result = $query
             ->orderByDesc('created_at')
             ->paginate(
                 perPage: $perPage,
                 page: $page
             );
+
+        return $result;
     }
 }
