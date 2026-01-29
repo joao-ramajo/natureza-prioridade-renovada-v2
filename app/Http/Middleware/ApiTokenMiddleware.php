@@ -3,11 +3,11 @@
 namespace App\Http\Middleware;
 
 use App\Models\ApiToken;
-use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Context;
 use Illuminate\Support\Facades\Crypt;
 use Symfony\Component\HttpFoundation\Response;
+use Closure;
 
 class ApiTokenMiddleware
 {
@@ -19,6 +19,16 @@ class ApiTokenMiddleware
     public function handle(Request $request, Closure $next): Response
     {
         $token = $request->header('X-API-KEY');
+
+        $except = [
+            'api/docs',
+        ];
+
+        foreach ($except as $route) {
+            if ($request->is($route)) {
+                return $next($request);
+            }
+        }
 
         if ($this->isDevelopment()) {
             return $next($request);
