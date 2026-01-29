@@ -75,7 +75,7 @@
         "pre-package-uninstall": [
             "Illuminate\\Foundation\\ComposerScripts::prePackageUninstall"
         ],
-        "stan": [
+        "lint:static": [
             "vendor/bin/phpstan analyse -c phpstan.neon"
         ],
         "optimize": [
@@ -83,7 +83,7 @@
             "./vendor/bin/sail php artisan cache:clear",
             "./vendor/bin/sail php artisan queue:work"
         ],
-        "lint": [
+        "lint:check": [
             "./vendor/bin/phpcs"
         ],
         "lint:fix": [
