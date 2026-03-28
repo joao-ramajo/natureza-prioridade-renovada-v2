@@ -3,7 +3,7 @@
 namespace App\CollectionPoint\Infrastructure\Http\Controllers;
 
 use App\CollectionPoint\Application\UseCase\FindCollectionPoint\FindCollectionPoint;
-use App\CollectionPoint\Infrastructure\Http\Resources\CollectionPointResource;
+use App\CollectionPoint\Application\UseCase\FindCollectionPoint\FindCollectionPointInput;
 use App\Http\Controllers\Controller;
 
 class GetCollectionPointController extends Controller
@@ -15,14 +15,14 @@ class GetCollectionPointController extends Controller
 
     public function __invoke(string $uuid)
     {
-        $cp = $this->findCollectionPoint->execute($uuid);
+        $output = $this->findCollectionPoint->execute(new FindCollectionPointInput($uuid));
 
-        if (!$cp) {
+        if (!$output) {
             return response()->json([
                 'message' => 'Ponto de coleta não encontrado.'
             ], 404);
         }
 
-        return new CollectionPointResource($cp);
+        return response()->json($output->toArray());
     }
 }

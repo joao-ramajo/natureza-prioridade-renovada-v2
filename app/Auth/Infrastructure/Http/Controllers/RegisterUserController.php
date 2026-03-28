@@ -4,6 +4,7 @@ namespace App\Auth\Infrastructure\Http\Controllers;
 
 use App\Auth\Application\Exception\AuthException;
 use App\Auth\Application\UseCase\RegisterUser\RegisterUser;
+use App\Auth\Application\UseCase\RegisterUser\RegisterUserInput;
 use App\Auth\Infrastructure\Http\Requests\RegisterUserRequest;
 use App\Http\Controllers\Controller;
 use Exception;
@@ -19,10 +20,9 @@ class RegisterUserController extends Controller
     public function __invoke(RegisterUserRequest $request): JsonResponse
     {
         try {
-            $this->registerUser->execute($request->validated());
-            return new JsonResponse([
-                'message' => 'Conta registrada com sucesso !'
-            ], 201);
+            $output = $this->registerUser->execute(RegisterUserInput::fromRequest($request));
+
+            return new JsonResponse($output->toArray(), 201);
         } catch (AuthException $e) {
             return new JsonResponse([
                 'message' => $e->getMessage(),

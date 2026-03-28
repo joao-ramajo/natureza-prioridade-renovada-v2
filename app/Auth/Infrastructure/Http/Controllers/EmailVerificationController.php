@@ -2,31 +2,33 @@
 
 namespace App\Auth\Infrastructure\Http\Controllers;
 
-use App\Auth\Domain\Entity\User;
+use App\Auth\Application\UseCase\VerifyEmail\VerifyEmail;
+use App\Auth\Application\UseCase\VerifyEmail\VerifyEmailInput;
 use App\Http\Controllers\Controller;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class EmailVerificationController extends Controller
 {
+    public function __construct(
+        protected readonly VerifyEmail $verifyEmail,
+    ) {
+    }
+
     public function __invoke($id, $hash)
     {
-        $user = User::findOrFail($id);
+        try {
+            $output = $this->verifyEmail->execute(new VerifyEmailInput(
+                userId: (int) $id,
+                hash: (string) $hash,
+            ));
 
-        if (!hash_equals((string) $hash, sha1($user->email))) {
             return response()->json([
-                'message' => 'Link inválido'
-            ], 403);
-        }
-
-        if ($user->hasVerifiedEmail()) {
-            return response()->json([
-                'message' => 'Email já verificado,'
+                ...$output->toArray(),
             ], 200);
+        } catch (HttpException $e) {
+            return response()->json([
+                'message' => $e->getMessage(),
+            ], $e->getStatusCode());
         }
-
-        $user->markEmailAsVerified();
-
-        return response()->json([
-            'message' => 'Email verificado com sucesso.',
-        ], 200);
     }
 }

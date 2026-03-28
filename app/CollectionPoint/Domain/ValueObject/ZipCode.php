@@ -1,6 +1,8 @@
-<?php declare(strict_types=1);
+<?php
 
-namespace Domain;
+declare(strict_types=1);
+
+namespace App\CollectionPoint\Domain\ValueObject;
 
 use InvalidArgumentException;
 
@@ -15,7 +17,7 @@ class ZipCode
         $this->value = $this->normalize($value);
     }
 
-    public static function create(string | int $value): ZipCode
+    public static function create(string | int $value): self
     {
         return new self($value);
     }
@@ -31,7 +33,7 @@ class ZipCode
     {
         // Remove qualquer hífen e formata como 12345-678
         $digits = str_replace('-', '', $value);
-        return substr($digits, 0, 5) . '-' . substr($digits, 5, 3);
+        return substr($digits, 0, 5).'-'.substr($digits, 5, 3);
     }
 
     /**

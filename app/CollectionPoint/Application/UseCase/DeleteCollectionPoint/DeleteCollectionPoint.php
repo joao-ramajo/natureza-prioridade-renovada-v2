@@ -6,20 +6,20 @@ use App\CollectionPoint\Domain\Entity\CollectionPoint;
 
 class DeleteCollectionPoint
 {
-    public function execute(string $uuid, int $userId): bool
+    public function execute(DeleteCollectionPointInput $input): ?DeleteCollectionPointOutput
     {
-        $collectionPoint = CollectionPoint::where('uuid', $uuid)->first();
+        $collectionPoint = CollectionPoint::where('uuid', $input->uuid)->first();
 
         if (!$collectionPoint) {
-            return false;
+            return null;
         }
 
-        if ($collectionPoint->user_id !== $userId) {
+        if ($collectionPoint->user_id !== $input->userId) {
             abort(403, 'Você não tem permissão para deletar este ponto de coleta.');
         }
 
         $collectionPoint->delete();
 
-        return true;
+        return new DeleteCollectionPointOutput('Ponto de coleta removido com sucesso.');
     }
 }

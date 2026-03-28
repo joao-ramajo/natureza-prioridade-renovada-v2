@@ -5,26 +5,21 @@ declare(strict_types=1);
 namespace App\CollectionPoint\Application\UseCase\FindCollectionPoint;
 
 use App\CollectionPoint\Domain\Entity\CollectionPoint;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class FindCollectionPoint
 {
-    /**
-     * @param string $uuid
-     * @param bool $withImages
-     */
-    public function execute(string $uuid, bool $withImages = true): ?CollectionPoint
+    public function execute(FindCollectionPointInput $input): ?FindCollectionPointOutput
     {
-        $cp = CollectionPoint::where('uuid', $uuid)->with('user:id,name,email')->first();
+        $cp = CollectionPoint::where('uuid', $input->uuid)->with('user:id,name,email')->first();
 
         if (!$cp) {
-            throw new ModelNotFoundException('Ponto de coleta não encontrado.');
+            return null;
         }
 
-        if ($withImages) {
+        if ($input->withImages) {
             $cp->load(['images']);
         }
 
-        return $cp;
+        return FindCollectionPointOutput::fromEntity($cp);
     }
 }

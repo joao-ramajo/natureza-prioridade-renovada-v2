@@ -3,6 +3,7 @@
 namespace App\CollectionPoint\Infrastructure\Http\Controllers;
 
 use App\CollectionPoint\Application\UseCase\DeleteCollectionPoint\DeleteCollectionPoint;
+use App\CollectionPoint\Application\UseCase\DeleteCollectionPoint\DeleteCollectionPointInput;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,19 +16,17 @@ class DeleteCollectionPointController extends Controller
 
     public function __invoke(string $uuid)
     {
-        $deleted = $this->deleteCollectionPoint->execute(
+        $output = $this->deleteCollectionPoint->execute(new DeleteCollectionPointInput(
             uuid: $uuid,
-            userId: Auth::id()
-        );
+            userId: (int) Auth::id(),
+        ));
 
-        if (! $deleted) {
+        if (! $output) {
             return response()->json([
                 'message' => 'Ponto de coleta não encontrado.',
             ], 404);
         }
 
-        return response()->json([
-            'message' => 'Ponto de coleta removido com sucesso.',
-        ], 200);
+        return response()->json($output->toArray(), 200);
     }
 }

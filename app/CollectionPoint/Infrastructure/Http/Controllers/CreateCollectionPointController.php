@@ -3,9 +3,9 @@
 namespace App\CollectionPoint\Infrastructure\Http\Controllers;
 
 use App\CollectionPoint\Application\UseCase\CreateCollectionPoint\CreateCollectionPoint;
+use App\CollectionPoint\Application\UseCase\CreateCollectionPoint\CreateCollectionPointInput;
 use App\CollectionPoint\Infrastructure\Http\Requests\CreateCollectionPointRequest;
 use App\Http\Controllers\Controller;
-use Domain\Input\CreateCollectionPointInput;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 class CreateCollectionPointController extends Controller
@@ -17,15 +17,8 @@ class CreateCollectionPointController extends Controller
 
     public function __invoke(CreateCollectionPointRequest $request): JsonResponse
     {
-        $data = CreateCollectionPointInput::fromRequest($request);
+        $output = $this->createCollectionPoint->execute(CreateCollectionPointInput::fromRequest($request));
 
-        $collectionPoint = $this->createCollectionPoint->execute($data);
-
-        $payload = [
-            'message' => 'Ponto de coleta criado com sucesso.',
-            'collection_point_id' => $collectionPoint->uuid
-        ];
-
-        return response()->json($payload, 201);
+        return response()->json($output->toArray(), 201);
     }
 }

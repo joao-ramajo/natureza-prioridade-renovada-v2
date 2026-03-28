@@ -10,19 +10,21 @@ use Illuminate\Support\Facades\Hash;
 
 class Login
 {
-    public function execute(array $data)
+    public function execute(LoginInput $input): LoginOutput
     {
-        $user = User::where('email', $data['email'])->first();
+        $user = User::where('email', $input->email)->first();
 
-        if (!$user || !Hash::check($data['password'], $user->password)) {
+        if (!$user || !Hash::check($input->password, $user->password)) {
             throw new AuthException(AuthException::invalidCredentials(), 401);
         }
 
         $token = $user->createToken('api')->plainTextToken;
 
-        return [
-            'token' => $token,
-            'user' => $user,
-        ];
+        return new LoginOutput(
+            accessToken: $token,
+            tokenType: 'Bearer',
+            userEmail: (string) $user->email,
+            userName: (string) $user->name,
+        );
     }
 }

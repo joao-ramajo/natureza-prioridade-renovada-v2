@@ -1,6 +1,6 @@
 <?php
 
-use Domain\ZipCode;
+use App\CollectionPoint\Domain\ValueObject\ZipCode;
 
 test('cria um cep válido com hífen', function () {
     $value = '06331-150';

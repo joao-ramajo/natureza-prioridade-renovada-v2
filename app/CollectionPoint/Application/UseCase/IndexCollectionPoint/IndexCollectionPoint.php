@@ -8,11 +8,9 @@ use App\CollectionPoint\Domain\Entity\CollectionPoint;
 
 class IndexCollectionPoint
 {
-    public function execute(
-        ?array $filters = [],
-        ?int $perPage = 15,
-        ?int $page = 1,
-    ) {
+    public function execute(IndexCollectionPointInput $input): IndexCollectionPointOutput
+    {
+        $filters = $input->filters;
         $query = CollectionPoint::query();
 
         $query->with('user');
@@ -48,10 +46,10 @@ class IndexCollectionPoint
         $result = $query
             ->orderByDesc('created_at')
             ->paginate(
-                perPage: $perPage,
-                page: $page
+                perPage: $input->perPage,
+                page: $input->page
             );
 
-        return $result;
+        return new IndexCollectionPointOutput($result->toArray());
     }
 }

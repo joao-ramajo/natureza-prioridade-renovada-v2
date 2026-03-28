@@ -9,11 +9,10 @@ use App\CollectionPoint\Infrastructure\Jobs\ProcessCollectionPointImageJob;
 
 class AddCollectionPointImages
 {
-    public function execute(CollectionPoint $cp, array $files): void
+    public function execute(CollectionPoint $cp, array $temporaryPaths): void
     {
-        foreach ($files as $file) {
-            $tempPath = $file->store('temp_uploads');
-            ProcessCollectionPointImageJob::dispatch($cp->id, $tempPath);
+        foreach ($temporaryPaths as $temporaryPath) {
+            ProcessCollectionPointImageJob::dispatch($cp->id, $temporaryPath);
         }
     }
 }

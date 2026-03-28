@@ -3,10 +3,9 @@
 namespace App\CollectionPoint\Infrastructure\Http\Controllers;
 
 use App\CollectionPoint\Application\UseCase\UpdateCollectionPoint\UpdateCollectionPoint;
+use App\CollectionPoint\Application\UseCase\UpdateCollectionPoint\UpdateCollectionPointInput;
 use App\CollectionPoint\Infrastructure\Http\Requests\UpdateCollectionPointRequest;
-use App\CollectionPoint\Infrastructure\Http\Resources\CollectionPointResource;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
 class UpdateCollectionPointController extends Controller
 {
@@ -17,18 +16,16 @@ class UpdateCollectionPointController extends Controller
 
     public function __invoke(UpdateCollectionPointRequest $request, string $uuid)
     {
-        $collectionPoint = $this->updateCollectionPoint->execute(
-            uuid: $uuid,
-            data: $request->validated(),
-            userId: Auth::id()
+        $output = $this->updateCollectionPoint->execute(
+            UpdateCollectionPointInput::fromRequest($request, $uuid)
         );
 
-        if (!$collectionPoint) {
+        if (!$output) {
             return response()->json([
                 'message' => 'Ponto de coleta não encontrado.',
             ], 404);
         }
 
-        return new CollectionPointResource($collectionPoint);
+        return response()->json($output->toArray());
     }
 }
