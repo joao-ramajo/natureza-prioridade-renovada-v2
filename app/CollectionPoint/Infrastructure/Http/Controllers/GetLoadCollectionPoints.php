@@ -7,7 +7,7 @@ use App\CollectionPoint\Application\UseCase\LoadCollectionPoint\LoadCollectionPo
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class ListCollectionPointController extends Controller
+class GetLoadCollectionPoints extends Controller
 {
     public function __construct(
         protected readonly LoadCollectionPoint $loadCollectionPoint

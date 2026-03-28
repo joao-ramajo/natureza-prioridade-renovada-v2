@@ -7,7 +7,7 @@ use App\CollectionPoint\Application\UseCase\DeleteCollectionPoint\DeleteCollecti
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
-class DeleteCollectionPointController extends Controller
+class DeleteDeleteCollectionPoint extends Controller
 {
     public function __construct(
         protected readonly DeleteCollectionPoint $deleteCollectionPoint

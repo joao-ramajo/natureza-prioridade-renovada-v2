@@ -6,7 +6,7 @@ use App\CollectionPoint\Application\UseCase\LoadCollectionPointByUuid\LoadCollec
 use App\CollectionPoint\Application\UseCase\LoadCollectionPointByUuid\LoadCollectionPointByUuidInput;
 use App\Http\Controllers\Controller;
 
-class GetCollectionPointController extends Controller
+class GetLoadCollectionPointByUuid extends Controller
 {
     public function __construct(
         protected readonly LoadCollectionPointByUuid $loadCollectionPointByUuid

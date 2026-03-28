@@ -8,7 +8,7 @@ use App\CollectionPoint\Infrastructure\Http\Requests\CreateCollectionPointReques
 use App\Http\Controllers\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
-class CreateCollectionPointController extends Controller
+class PostCreateCollectionPoint extends Controller
 {
     public function __construct(
         protected readonly CreateCollectionPoint $createCollectionPoint,

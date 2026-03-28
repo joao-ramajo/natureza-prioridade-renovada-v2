@@ -7,7 +7,7 @@ use App\CollectionPoint\Application\UseCase\UpdateCollectionPoint\UpdateCollecti
 use App\CollectionPoint\Infrastructure\Http\Requests\UpdateCollectionPointRequest;
 use App\Http\Controllers\Controller;
 
-class UpdateCollectionPointController extends Controller
+class PutUpdateCollectionPoint extends Controller
 {
     public function __construct(
         protected readonly UpdateCollectionPoint $updateCollectionPoint

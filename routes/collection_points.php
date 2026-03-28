@@ -1,39 +1,39 @@
 <?php
 
-use App\CollectionPoint\Infrastructure\Http\Controllers\CreateCollectionPointController;
-use App\CollectionPoint\Infrastructure\Http\Controllers\DeleteCollectionPointController;
-use App\CollectionPoint\Infrastructure\Http\Controllers\GetCollectionPointController;
-use App\CollectionPoint\Infrastructure\Http\Controllers\ListCollectionPointController;
-use App\CollectionPoint\Infrastructure\Http\Controllers\UpdateCollectionPointController;
+use App\CollectionPoint\Infrastructure\Http\Controllers\DeleteDeleteCollectionPoint;
+use App\CollectionPoint\Infrastructure\Http\Controllers\GetLoadCollectionPointByUuid;
+use App\CollectionPoint\Infrastructure\Http\Controllers\GetLoadCollectionPoints;
+use App\CollectionPoint\Infrastructure\Http\Controllers\PostCreateCollectionPoint;
+use App\CollectionPoint\Infrastructure\Http\Controllers\PutUpdateCollectionPoint;
 use Illuminate\Support\Facades\Route;
 
 Route::get(
     '/collection-points',
-    ListCollectionPointController::class
+    GetLoadCollectionPoints::class
 )->name('collection_points.list');
 
 Route::get(
     '/collection-points/{uuid}',
-    GetCollectionPointController::class
+    GetLoadCollectionPointByUuid::class
 )->name('collection_points.find');
 
 Route::post(
     '/collection-points',
-    CreateCollectionPointController::class
+    PostCreateCollectionPoint::class
 )
 ->middleware(['auth:sanctum'])
 ->name('collection_points.create');
 
 Route::put(
     '/collection-points/{uuid}',
-    UpdateCollectionPointController::class
+    PutUpdateCollectionPoint::class
 )
 ->middleware(['auth:sanctum'])
 ->name('collection_points.update');
 
 Route::delete(
     '/collection-points/{uuid}',
-    DeleteCollectionPointController::class
+    DeleteDeleteCollectionPoint::class
 )
 ->middleware(['auth:sanctum'])
 ->name('collection_points.delete');
