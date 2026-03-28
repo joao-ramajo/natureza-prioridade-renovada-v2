@@ -30,7 +30,7 @@ class CreateCollectionPoint
             'state' => $input->state,
             'zip_code' => $input->zipCode,
             'description' => $input->description,
-            'status' => CollectionPointStatus::PENDING,
+            'status' => CollectionPointStatus::ACTIVE,
             'uuid' => Str::uuid(),
         ];
 

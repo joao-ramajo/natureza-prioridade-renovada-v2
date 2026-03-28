@@ -2,14 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\CollectionPoint\Application\UseCase\IndexCollectionPoint;
+namespace App\CollectionPoint\Application\UseCase\LoadCollectionPoint;
 
 use Illuminate\Http\Request;
 
-final readonly class IndexCollectionPointInput
+final readonly class LoadCollectionPointInput
 {
     public function __construct(
         public array $filters = [],
+        public bool $all = false,
         public int $perPage = 15,
         public int $page = 1,
     ) {
@@ -28,6 +29,7 @@ final readonly class IndexCollectionPointInput
 
         return new self(
             filters: $filters,
+            all: $request->boolean('all'),
             perPage: (int) $request->integer('perPage', 15),
             page: (int) $request->integer('page', 1),
         );

@@ -4,8 +4,8 @@ namespace App\CollectionPoint\Domain\Entity;
 
 enum CollectionPointStatus: string
 {
-    case PENDING = 'avaliacao_pendente';
-    case EXCLUDED = 'excluido';
+    case ACTIVE = 'active';
+    case INACTIVE = 'inactive';
 
     /**
      * Valores para validação (request / rule)

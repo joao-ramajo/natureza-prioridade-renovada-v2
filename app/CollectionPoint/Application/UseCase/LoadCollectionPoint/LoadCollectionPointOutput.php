@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\CollectionPoint\Application\UseCase\IndexCollectionPoint;
+namespace App\CollectionPoint\Application\UseCase\LoadCollectionPoint;
 
-final readonly class IndexCollectionPointOutput
+final readonly class LoadCollectionPointOutput
 {
     public function __construct(
         public array $payload,
