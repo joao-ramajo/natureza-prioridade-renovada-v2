@@ -1,7 +1,7 @@
 <?php
 
 use App\CollectionPoint\Domain\Entity\CollectionPointStatus;
-use App\CollectionPoint\Application\Event\CollectionPointCreated;
+use App\CollectionPoint\Domain\Event\CollectionPointCreated;
 use App\CollectionPoint\Domain\Entity\CollectionPoint;
 use App\Auth\Domain\Entity\User;
 use Illuminate\Http\UploadedFile;

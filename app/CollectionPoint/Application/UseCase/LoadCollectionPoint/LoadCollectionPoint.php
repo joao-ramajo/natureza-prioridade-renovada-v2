@@ -4,11 +4,17 @@ declare(strict_types=1);
 
 namespace App\CollectionPoint\Application\UseCase\LoadCollectionPoint;
 
+use App\CollectionPoint\Application\Mapper\CollectionPointMapper;
 use App\CollectionPoint\Domain\Entity\CollectionPoint;
 use App\CollectionPoint\Domain\Entity\CollectionPointStatus;
 
 class LoadCollectionPoint
 {
+    public function __construct(
+        protected readonly CollectionPointMapper $collectionPointMapper,
+    ) {
+    }
+
     public function execute(LoadCollectionPointInput $input): LoadCollectionPointOutput
     {
         $filters = $input->filters;
@@ -49,6 +55,12 @@ class LoadCollectionPoint
                 perPage: $input->perPage,
                 page: $input->page
             );
+
+        $result->setCollection(
+            $result->getCollection()->map(
+                fn (CollectionPoint $collectionPoint) => $this->collectionPointMapper->fromEntity($collectionPoint),
+            ),
+        );
 
         return new LoadCollectionPointOutput($result->toArray());
     }

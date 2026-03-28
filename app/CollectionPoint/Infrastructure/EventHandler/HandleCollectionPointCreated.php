@@ -1,8 +1,8 @@
 <?php
 
-namespace App\CollectionPoint\Application\Listener;
+namespace App\CollectionPoint\Infrastructure\EventHandler;
 
-use App\CollectionPoint\Application\Event\CollectionPointCreated;
+use App\CollectionPoint\Domain\Event\CollectionPointCreated;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class HandleCollectionPointCreated implements ShouldQueue

@@ -18,7 +18,7 @@ class UpdateCollectionPoint
             ->with('user:id,name,email')
             ->first();
 
-        if (! $collectionPoint) {
+        if ($collectionPoint === null) {
             return null;
         }
 

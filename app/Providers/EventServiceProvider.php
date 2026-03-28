@@ -2,10 +2,10 @@
 
 namespace App\Providers;
 
-use App\Auth\Application\Event\UserCreated;
-use App\Auth\Application\Listener\SendVerifiedEmailHandler;
-use App\CollectionPoint\Application\Event\CollectionPointCreated;
-use App\CollectionPoint\Application\Listener\HandleCollectionPointCreated;
+use App\Auth\Domain\Event\UserCreated;
+use App\Auth\Infrastructure\EventHandler\SendVerifiedEmailHandler;
+use App\CollectionPoint\Domain\Event\CollectionPointCreated;
+use App\CollectionPoint\Infrastructure\EventHandler\HandleCollectionPointCreated;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider

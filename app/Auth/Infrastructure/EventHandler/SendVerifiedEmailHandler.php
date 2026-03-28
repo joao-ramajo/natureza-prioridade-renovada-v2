@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Auth\Application\Listener;
+namespace App\Auth\Infrastructure\EventHandler;
 
-use App\Auth\Application\Event\UserCreated;
+use App\Auth\Domain\Event\UserCreated;
 use App\Auth\Infrastructure\Mail\UseCase\SendVerifyEmail\SendVerifyEmail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 

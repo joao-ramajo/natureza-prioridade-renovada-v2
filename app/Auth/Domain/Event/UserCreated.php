@@ -1,14 +1,14 @@
 <?php
 
-namespace App\CollectionPoint\Application\Event;
+namespace App\Auth\Domain\Event;
 
-use App\CollectionPoint\Domain\Entity\CollectionPoint;
+use App\Auth\Domain\Entity\User;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class CollectionPointCreated
+class UserCreated
 {
     use Dispatchable;
     use InteractsWithSockets;
@@ -18,8 +18,9 @@ class CollectionPointCreated
      * Create a new event instance.
      */
     public function __construct(
-        public readonly CollectionPoint $collectionPoint
+        public readonly User $user
     ) {
+        //
     }
 
     /**

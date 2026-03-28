@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Auth\Application\UseCase\RegisterUser;
 
-use App\Auth\Application\Event\UserCreated;
+use App\Auth\Domain\Event\UserCreated;
 use App\Auth\Application\Exception\AuthException;
 use App\Auth\Domain\Entity\User;
 
