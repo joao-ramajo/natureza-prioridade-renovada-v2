@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\CollectionPoint\Application\UseCase\CreateCollectionPoint;
 
+use App\CollectionPoint\Application\Event\CollectionPointCreated;
 use App\CollectionPoint\Application\UseCase\AddCollectionPointImages\AddCollectionPointImages;
 use App\CollectionPoint\Application\UseCase\UploadPrincipalImage\UploadPrincipalImage;
-use App\CollectionPoint\Domain\Entity\CollectionPointStatus;
-use App\CollectionPoint\Application\Event\CollectionPointCreated;
 use App\CollectionPoint\Domain\Entity\CollectionPoint;
+use App\CollectionPoint\Domain\Entity\CollectionPointStatus;
 use Domain\Input\CreateCollectionPointInput;
 use Illuminate\Support\Str;
 

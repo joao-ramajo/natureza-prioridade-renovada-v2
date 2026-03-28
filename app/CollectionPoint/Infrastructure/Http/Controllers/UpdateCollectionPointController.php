@@ -3,9 +3,9 @@
 namespace App\CollectionPoint\Infrastructure\Http\Controllers;
 
 use App\CollectionPoint\Application\UseCase\UpdateCollectionPoint\UpdateCollectionPoint;
-use App\Http\Controllers\Controller;
 use App\CollectionPoint\Infrastructure\Http\Requests\UpdateCollectionPointRequest;
 use App\CollectionPoint\Infrastructure\Http\Resources\CollectionPointResource;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class UpdateCollectionPointController extends Controller

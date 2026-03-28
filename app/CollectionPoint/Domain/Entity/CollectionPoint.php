@@ -4,13 +4,12 @@ namespace App\CollectionPoint\Domain\Entity;
 
 use App\Auth\Domain\Entity\User;
 use Database\Factories\CollectionPointFactory;
-use Domain\ZipCode;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\UseFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
@@ -82,7 +81,6 @@ class CollectionPoint extends Model
     {
         return $this->belongsTo(User::class);
     }
-
 
     public function images(): HasMany
     {

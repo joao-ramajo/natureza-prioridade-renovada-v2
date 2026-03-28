@@ -2,10 +2,10 @@
 
 namespace App\Auth\Infrastructure\Http\Controllers;
 
-use App\Auth\Application\UseCase\RegisterUser\RegisterUser;
 use App\Auth\Application\Exception\AuthException;
-use App\Http\Controllers\Controller;
+use App\Auth\Application\UseCase\RegisterUser\RegisterUser;
 use App\Auth\Infrastructure\Http\Requests\RegisterUserRequest;
+use App\Http\Controllers\Controller;
 use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
 

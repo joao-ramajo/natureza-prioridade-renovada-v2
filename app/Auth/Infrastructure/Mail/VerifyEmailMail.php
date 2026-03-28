@@ -3,7 +3,6 @@
 namespace App\Auth\Infrastructure\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
@@ -14,9 +13,6 @@ class VerifyEmailMail extends Mailable
     use Queueable;
     use SerializesModels;
 
-    /**
-     * Create a new message instance.
-     */
     public function __construct(
         public string $name,
         public string $link
@@ -24,9 +20,6 @@ class VerifyEmailMail extends Mailable
         //
     }
 
-    /**
-     * Get the message envelope.
-     */
     public function envelope(): Envelope
     {
         return new Envelope(
@@ -34,9 +27,6 @@ class VerifyEmailMail extends Mailable
         );
     }
 
-    /**
-     * Get the message content definition.
-     */
     public function content(): Content
     {
         return new Content(
@@ -49,8 +39,6 @@ class VerifyEmailMail extends Mailable
     }
 
     /**
-     * Get the attachments for the message.
-     *
      * @return array<int, \Illuminate\Mail\Mailables\Attachment>
      */
     public function attachments(): array

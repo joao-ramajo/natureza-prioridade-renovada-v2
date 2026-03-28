@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\CollectionPoint\Application\UseCase\AddCollectionPointImages;
 
-use App\CollectionPoint\Infrastructure\Jobs\ProcessCollectionPointImageJob;
 use App\CollectionPoint\Domain\Entity\CollectionPoint;
+use App\CollectionPoint\Infrastructure\Jobs\ProcessCollectionPointImageJob;
 
 class AddCollectionPointImages
 {

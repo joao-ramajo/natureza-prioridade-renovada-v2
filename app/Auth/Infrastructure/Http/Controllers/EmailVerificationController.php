@@ -2,8 +2,8 @@
 
 namespace App\Auth\Infrastructure\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Auth\Domain\Entity\User;
+use App\Http\Controllers\Controller;
 
 class EmailVerificationController extends Controller
 {

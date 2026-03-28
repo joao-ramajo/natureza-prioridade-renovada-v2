@@ -16,7 +16,7 @@ class UpdateCollectionPointRequest extends ApiFormRequest
     public function rules(): array
     {
         return [
-            'name'        => ['sometimes', 'string', 'min:3', 'max:255'],
+            'name' => ['sometimes', 'string', 'min:3', 'max:255'],
             'description' => ['sometimes', 'nullable', 'string'],
 
             'category' => [
@@ -24,9 +24,9 @@ class UpdateCollectionPointRequest extends ApiFormRequest
                 'string',
             ],
 
-            'address'  => ['sometimes', 'string', 'max:255'],
-            'city'     => ['sometimes', 'string', 'max:100'],
-            'state'    => ['sometimes', 'string', 'size:2'],
+            'address' => ['sometimes', 'string', 'max:255'],
+            'city' => ['sometimes', 'string', 'max:100'],
+            'state' => ['sometimes', 'string', 'size:2'],
             'zip_code' => ['sometimes', 'string', 'max:20'],
         ];
     }

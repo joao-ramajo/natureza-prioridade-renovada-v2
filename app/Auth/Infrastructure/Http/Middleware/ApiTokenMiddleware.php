@@ -3,11 +3,10 @@
 namespace App\Auth\Infrastructure\Http\Middleware;
 
 use App\Auth\Domain\Entity\ApiToken;
+use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Context;
-use Illuminate\Support\Facades\Crypt;
 use Symfony\Component\HttpFoundation\Response;
-use Closure;
 
 class ApiTokenMiddleware
 {

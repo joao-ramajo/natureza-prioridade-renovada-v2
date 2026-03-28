@@ -2,8 +2,8 @@
 
 namespace App\CollectionPoint\Infrastructure\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\CollectionPoint\Application\UseCase\DeleteCollectionPoint\DeleteCollectionPoint;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class DeleteCollectionPointController extends Controller

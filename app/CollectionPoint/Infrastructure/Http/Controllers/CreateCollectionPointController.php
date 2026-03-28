@@ -3,8 +3,8 @@
 namespace App\CollectionPoint\Infrastructure\Http\Controllers;
 
 use App\CollectionPoint\Application\UseCase\CreateCollectionPoint\CreateCollectionPoint;
-use App\Http\Controllers\Controller;
 use App\CollectionPoint\Infrastructure\Http\Requests\CreateCollectionPointRequest;
+use App\Http\Controllers\Controller;
 use Domain\Input\CreateCollectionPointInput;
 use Symfony\Component\HttpFoundation\JsonResponse;
 

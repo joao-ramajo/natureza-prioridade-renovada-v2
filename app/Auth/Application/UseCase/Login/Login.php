@@ -6,7 +6,6 @@ namespace App\Auth\Application\UseCase\Login;
 
 use App\Auth\Application\Exception\AuthException;
 use App\Auth\Domain\Entity\User;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class Login

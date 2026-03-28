@@ -2,8 +2,8 @@
 
 namespace App\Auth\Application\Listener;
 
-use App\Auth\Infrastructure\Mail\UseCase\SendVerifyEmail\SendVerifyEmail;
 use App\Auth\Application\Event\UserCreated;
+use App\Auth\Infrastructure\Mail\UseCase\SendVerifyEmail\SendVerifyEmail;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
 class SendVerifiedEmailHandler implements ShouldQueue

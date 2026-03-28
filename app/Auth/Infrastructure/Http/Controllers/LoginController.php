@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace App\Auth\Infrastructure\Http\Controllers;
 
-use App\Auth\Application\UseCase\Login\Login;
 use App\Auth\Application\Exception\AuthException;
+use App\Auth\Application\UseCase\Login\Login;
 use App\Auth\Infrastructure\Http\Requests\LoginRequest;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Exception;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 class LoginController
 {

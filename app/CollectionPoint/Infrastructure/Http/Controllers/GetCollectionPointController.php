@@ -3,8 +3,8 @@
 namespace App\CollectionPoint\Infrastructure\Http\Controllers;
 
 use App\CollectionPoint\Application\UseCase\FindCollectionPoint\FindCollectionPoint;
-use App\Http\Controllers\Controller;
 use App\CollectionPoint\Infrastructure\Http\Resources\CollectionPointResource;
+use App\Http\Controllers\Controller;
 
 class GetCollectionPointController extends Controller
 {
