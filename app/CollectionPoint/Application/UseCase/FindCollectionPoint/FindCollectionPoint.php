@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\CollectionPoint\Application\UseCase\FindCollectionPoint;
 
-use App\CollectionPoint\Domain\CollectionPoint;
+use App\CollectionPoint\Domain\Entity\CollectionPoint;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class FindCollectionPoint

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Auth\Domain;
+namespace App\Auth\Domain\Entity;
 
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;

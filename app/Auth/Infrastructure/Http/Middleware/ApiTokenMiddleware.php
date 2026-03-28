@@ -2,7 +2,7 @@
 
 namespace App\Auth\Infrastructure\Http\Middleware;
 
-use App\Auth\Domain\ApiToken;
+use App\Auth\Domain\Entity\ApiToken;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Context;
 use Illuminate\Support\Facades\Crypt;

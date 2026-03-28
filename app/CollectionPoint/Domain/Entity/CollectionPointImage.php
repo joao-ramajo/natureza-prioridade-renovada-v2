@@ -1,6 +1,6 @@
 <?php
 
-namespace App\CollectionPoint\Domain;
+namespace App\CollectionPoint\Domain\Entity;
 
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;

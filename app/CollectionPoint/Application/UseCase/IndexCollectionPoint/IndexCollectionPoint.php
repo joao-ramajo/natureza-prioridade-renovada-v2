@@ -2,7 +2,7 @@
 
 namespace App\CollectionPoint\Application\UseCase\IndexCollectionPoint;
 
-use App\CollectionPoint\Domain\CollectionPoint;
+use App\CollectionPoint\Domain\Entity\CollectionPoint;
 
 class IndexCollectionPoint
 {

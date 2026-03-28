@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Auth\Infrastructure\Mail\UseCase\SendVerifyEmail;
 
 use App\Auth\Infrastructure\Mail\VerifyEmailMail;
-use App\Auth\Domain\User;
+use App\Auth\Domain\Entity\User;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
 

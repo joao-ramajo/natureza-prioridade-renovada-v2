@@ -1,7 +1,7 @@
 <?php
 
-use App\CollectionPoint\Domain\CollectionPoint;
-use App\Auth\Domain\User;
+use App\CollectionPoint\Domain\Entity\CollectionPoint;
+use App\Auth\Domain\Entity\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 uses(RefreshDatabase::class);

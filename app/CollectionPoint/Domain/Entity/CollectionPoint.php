@@ -1,8 +1,8 @@
 <?php
 
-namespace App\CollectionPoint\Domain;
+namespace App\CollectionPoint\Domain\Entity;
 
-use App\Auth\Domain\User;
+use App\Auth\Domain\Entity\User;
 use Database\Factories\CollectionPointFactory;
 use Domain\ZipCode;
 use Illuminate\Database\Eloquent\Attributes\Fillable;

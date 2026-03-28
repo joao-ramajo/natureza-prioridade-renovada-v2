@@ -1,6 +1,6 @@
 <?php
 
-namespace App\CollectionPoint\Domain;
+namespace App\CollectionPoint\Domain\Entity;
 
 enum CollectionPointStatus: string
 {

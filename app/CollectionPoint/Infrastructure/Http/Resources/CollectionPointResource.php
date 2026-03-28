@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Request;
 
 /**
- * @property \App\CollectionPoint\Domain\CollectionPoint $resource
+ * @property \App\CollectionPoint\Domain\Entity\CollectionPoint $resource
  */
 class CollectionPointResource extends JsonResource
 {

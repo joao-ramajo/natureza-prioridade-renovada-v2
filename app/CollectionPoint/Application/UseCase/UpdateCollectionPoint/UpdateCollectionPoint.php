@@ -2,7 +2,7 @@
 
 namespace App\CollectionPoint\Application\UseCase\UpdateCollectionPoint;
 
-use App\CollectionPoint\Domain\CollectionPoint;
+use App\CollectionPoint\Domain\Entity\CollectionPoint;
 
 class UpdateCollectionPoint
 {

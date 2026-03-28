@@ -1,7 +1,7 @@
 <?php
 
-use App\Auth\Domain\User;
-use App\CollectionPoint\Domain\CollectionPoint;
+use App\Auth\Domain\Entity\User;
+use App\CollectionPoint\Domain\Entity\CollectionPoint;
 use Laravel\Sanctum\Sanctum;
 
 test('user can delete own collection point', function () {

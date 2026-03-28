@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Auth\Domain;
+namespace App\Auth\Domain\Entity;
 
-use App\CollectionPoint\Domain\CollectionPoint;
+use App\CollectionPoint\Domain\Entity\CollectionPoint;
 use Database\Factories\UserFactory;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Attributes\Fillable;

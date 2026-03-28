@@ -2,9 +2,9 @@
 
 namespace Database\Factories;
 
-use App\CollectionPoint\Domain\CollectionPointStatus;
-use App\CollectionPoint\Domain\CollectionPoint;
-use App\Auth\Domain\User;
+use App\CollectionPoint\Domain\Entity\CollectionPointStatus;
+use App\CollectionPoint\Domain\Entity\CollectionPoint;
+use App\Auth\Domain\Entity\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**

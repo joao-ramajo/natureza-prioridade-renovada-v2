@@ -6,7 +6,7 @@ namespace App\Auth\Application\UseCase\RegisterUser;
 
 use App\Auth\Application\Event\UserCreated;
 use App\Auth\Application\Exception\AuthException;
-use App\Auth\Domain\User;
+use App\Auth\Domain\Entity\User;
 use DomainException;
 
 class RegisterUser

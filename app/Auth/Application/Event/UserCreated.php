@@ -2,7 +2,7 @@
 
 namespace App\Auth\Application\Event;
 
-use App\Auth\Domain\User;
+use App\Auth\Domain\Entity\User;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;

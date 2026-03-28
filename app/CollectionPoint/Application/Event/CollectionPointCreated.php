@@ -2,7 +2,7 @@
 
 namespace App\CollectionPoint\Application\Event;
 
-use App\CollectionPoint\Domain\CollectionPoint;
+use App\CollectionPoint\Domain\Entity\CollectionPoint;
 use Illuminate\Broadcasting\Channel;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PresenceChannel;

@@ -3,7 +3,7 @@
 namespace App\Auth\Infrastructure\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Auth\Domain\User;
+use App\Auth\Domain\Entity\User;
 
 class EmailVerificationController extends Controller
 {

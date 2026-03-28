@@ -2,7 +2,7 @@
 
 namespace App\Auth\Infrastructure\Console\Commands;
 
-use App\Auth\Domain\ApiToken;
+use App\Auth\Domain\Entity\ApiToken;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 
