@@ -9,7 +9,7 @@ use App\CollectionPoint\Domain\Entity\CollectionPointStatus;
 
 final class CollectionPointMapper
 {
-    public static function toArray(CollectionPoint $collectionPoint): array
+    public function fromEntity(CollectionPoint $collectionPoint): array
     {
         $status = $collectionPoint->status;
 

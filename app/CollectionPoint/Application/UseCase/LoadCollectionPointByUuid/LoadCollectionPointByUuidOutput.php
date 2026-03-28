@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\CollectionPoint\Application\UseCase\UpdateCollectionPoint;
+namespace App\CollectionPoint\Application\UseCase\LoadCollectionPointByUuid;
 
-final readonly class UpdateCollectionPointOutput
+final readonly class LoadCollectionPointByUuidOutput
 {
     public function __construct(
         public array $data,

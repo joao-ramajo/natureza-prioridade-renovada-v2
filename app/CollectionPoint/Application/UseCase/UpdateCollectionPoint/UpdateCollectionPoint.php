@@ -2,10 +2,16 @@
 
 namespace App\CollectionPoint\Application\UseCase\UpdateCollectionPoint;
 
+use App\CollectionPoint\Application\Mapper\CollectionPointMapper;
 use App\CollectionPoint\Domain\Entity\CollectionPoint;
 
 class UpdateCollectionPoint
 {
+    public function __construct(
+        protected readonly CollectionPointMapper $collectionPointMapper,
+    ) {
+    }
+
     public function execute(UpdateCollectionPointInput $input): ?UpdateCollectionPointOutput
     {
         $collectionPoint = CollectionPoint::where('uuid', $input->uuid)
@@ -31,8 +37,10 @@ class UpdateCollectionPoint
 
         $collectionPoint->update($data);
 
-        return UpdateCollectionPointOutput::fromEntity(
-            $collectionPoint->refresh()->loadMissing('user:id,name,email')
+        return new UpdateCollectionPointOutput(
+            data: $this->collectionPointMapper->fromEntity(
+                $collectionPoint->refresh()->loadMissing('user:id,name,email')
+            ),
         );
     }
 }
