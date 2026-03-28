@@ -24,7 +24,7 @@ use Illuminate\Support\Str;
  * @property string $city
  * @property string $state
  * @property string $zip_code
- * @property string $principal_image
+ * @property string|null $principal_image
  * @property float|null $lat
  * @property float|null $lng
  * @property \Carbon\Carbon $created_at
