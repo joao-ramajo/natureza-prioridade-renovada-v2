@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\CollectionPoint\ApproveCollectionPointController;
-use App\Http\Controllers\CollectionPoint\ContestCollectionPointController;
-use App\Http\Controllers\CollectionPoint\CreateCollectionPointController;
-use App\Http\Controllers\CollectionPoint\DeleteCollectionPointController;
-use App\Http\Controllers\CollectionPoint\GetCollectionPointController;
-use App\Http\Controllers\CollectionPoint\ListCollectionPointController;
-use App\Http\Controllers\CollectionPoint\ReproveCollectionPointController;
-use App\Http\Controllers\CollectionPoint\UpdateCollectionPointController;
+use App\CollectionPoint\Infrastructure\Http\Controllers\ApproveCollectionPointController;
+use App\CollectionPoint\Infrastructure\Http\Controllers\ContestCollectionPointController;
+use App\CollectionPoint\Infrastructure\Http\Controllers\CreateCollectionPointController;
+use App\CollectionPoint\Infrastructure\Http\Controllers\DeleteCollectionPointController;
+use App\CollectionPoint\Infrastructure\Http\Controllers\GetCollectionPointController;
+use App\CollectionPoint\Infrastructure\Http\Controllers\ListCollectionPointController;
+use App\CollectionPoint\Infrastructure\Http\Controllers\ReproveCollectionPointController;
+use App\CollectionPoint\Infrastructure\Http\Controllers\UpdateCollectionPointController;
 use Illuminate\Support\Facades\Route;
 
 Route::get(

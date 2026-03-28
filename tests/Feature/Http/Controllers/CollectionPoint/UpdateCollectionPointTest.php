@@ -1,7 +1,7 @@
 <?php
 
-use App\Models\CollectionPoint;
-use App\Models\User;
+use App\CollectionPoint\Domain\CollectionPoint;
+use App\Auth\Domain\User;
 use Illuminate\Support\Str;
 use Laravel\Sanctum\Sanctum;
 

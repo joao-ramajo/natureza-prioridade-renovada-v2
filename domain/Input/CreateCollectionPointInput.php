@@ -2,7 +2,7 @@
 
 namespace Domain\Input;
 
-use App\Http\Requests\CollectionPoint\CreateCollectionPointRequest;
+use App\CollectionPoint\Infrastructure\Http\Requests\CreateCollectionPointRequest;
 use Domain\ZipCode;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\UploadedFile;

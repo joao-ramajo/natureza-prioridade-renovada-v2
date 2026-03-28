@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Auth\EmailVerificationController;
-use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\RegisterUserController;
+use App\Auth\Infrastructure\Http\Controllers\EmailVerificationController;
+use App\Auth\Infrastructure\Http\Controllers\LoginController;
+use App\Auth\Infrastructure\Http\Controllers\RegisterUserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get(

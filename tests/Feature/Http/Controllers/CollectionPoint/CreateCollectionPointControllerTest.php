@@ -1,9 +1,9 @@
 <?php
 
-use App\Enum\CollectionPointStatus;
-use App\Events\CollectionPointCreated;
-use App\Models\CollectionPoint;
-use App\Models\User;
+use App\CollectionPoint\Domain\CollectionPointStatus;
+use App\CollectionPoint\Application\Event\CollectionPointCreated;
+use App\CollectionPoint\Domain\CollectionPoint;
+use App\Auth\Domain\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Storage;
