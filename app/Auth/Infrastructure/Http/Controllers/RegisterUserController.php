@@ -16,7 +16,7 @@ class RegisterUserController extends Controller
     ) {
     }
 
-    public function __invoke(RegisterUserRequest $request)
+    public function __invoke(RegisterUserRequest $request): JsonResponse
     {
         try {
             $this->registerUser->execute($request->validated());

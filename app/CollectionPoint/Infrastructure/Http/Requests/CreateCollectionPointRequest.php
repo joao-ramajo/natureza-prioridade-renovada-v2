@@ -28,7 +28,7 @@ class CreateCollectionPointRequest extends ApiFormRequest
             'address' => ['required', 'string', 'max:255'],
             'city' => ['required', 'string', 'max:100'],
             'state' => ['required', 'string', 'size:2'],
-            'zip_code' => ['required', 'string', 'max:20'],
+            'zip_code' => ['required', 'string', 'max:9'],
             'description' => ['nullable', 'string'],
             'principal_image' => 'file|required',
             'images' => ['nullable', 'array'],

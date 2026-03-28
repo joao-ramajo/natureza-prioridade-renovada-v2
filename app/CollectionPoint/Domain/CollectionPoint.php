@@ -25,13 +25,8 @@ use Illuminate\Support\Str;
  * @property string $principal_image
  * @property float|null $lat
  * @property float|null $lng
- * @property \Carbon\Carbon|null $approved_at
- * @property \Carbon\Carbon|null $rejected_at
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
- * @property \Carbon\Carbon|null $contested_at
- * @property \Carbon\Carbon|null $contestation_deadline
- * @property \Carbon\Carbon|null $reevaluated_at
  * @property User $user
  * @property-read \Illuminate\Database\Eloquent\Collection|CollectionPointImage[] $images
  */
@@ -52,23 +47,12 @@ class CollectionPoint extends Model
         'description',
         'lat',
         'lng',
-        'rejection_reason',
-        'approved_at',
-        'rejected_at',
         'principal_image',
-        'contested_at',
-        'contestation_deadline',
-        'reevaluated_at',
     ];
 
     protected $casts = [
         'lat' => 'decimal:7',
         'lng' => 'decimal:7',
-        'approved_at' => 'datetime',
-        'rejected_at' => 'datetime',
-        'contested_at' => 'datetime',
-        'contestation_deadline' => 'datetime',
-        'reevaluated_at' => 'datetime',
         'status' => CollectionPointStatus::class,
     ];
 

@@ -22,9 +22,7 @@ class UpdateCollectionPoint
             $data['id'],
             $data['uuid'],
             $data['user_id'],
-            $data['status'],
-            $data['approved_at'],
-            $data['rejected_at']
+            $data['status']
         );
 
         $collectionPoint->update($data);

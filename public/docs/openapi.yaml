@@ -415,29 +415,6 @@ components:
           type: number
           format: float
           nullable: true
-        rejection_reason:
-          type: string
-          nullable: true
-        approved_at:
-          type: string
-          format: date-time
-          nullable: true
-        rejected_at:
-          type: string
-          format: date-time
-          nullable: true
-        contested_at:
-          type: string
-          format: date-time
-          nullable: true
-        contestation_deadline:
-          type: string
-          format: date-time
-          nullable: true
-        reevaluated_at:
-          type: string
-          format: date-time
-          nullable: true
         created_at:
           type: string
           format: date-time

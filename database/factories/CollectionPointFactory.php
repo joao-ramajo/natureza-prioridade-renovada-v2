@@ -36,43 +36,14 @@ class CollectionPointFactory extends Factory
             'description' => $this->faker->optional()->paragraph,
             'lat' => $this->faker->latitude,
             'lng' => $this->faker->longitude,
-            'rejection_reason' => null,
-            'approved_at' => null,
-            'rejected_at' => null,
-            'contested_at' => null,
-            'contestation_deadline' => null,
-            'reevaluated_at' => null,
             'principal_image' => 'https://placehold.co/200x200',
         ];
-    }
-
-    public function approved(): static
-    {
-        return $this->state(fn() => [
-            'status' => 'approved',
-            'approved_at' => now(),
-            'rejected_at' => null,
-            'rejection_reason' => null,
-        ]);
-    }
-
-    public function rejected(): static
-    {
-        return $this->state(fn() => [
-            'status' => 'rejected',
-            'approved_at' => null,
-            'rejected_at' => now(),
-            'rejection_reason' => $this->faker->sentence,
-        ]);
     }
 
     public function pending(): static
     {
         return $this->state(fn() => [
             'status' => 'pending',
-            'approved_at' => null,
-            'rejected_at' => null,
-            'rejection_reason' => null,
         ]);
     }
 }

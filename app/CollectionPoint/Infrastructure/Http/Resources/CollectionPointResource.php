@@ -26,8 +26,6 @@ class CollectionPointResource extends JsonResource
             'address' => $this->resource->address,
             'city' => $this->resource->city,
             'state' => $this->resource->state,
-            'rejected_at' => $this->resource->rejected_at?->toISOString(),
-            'rejection_reason' => $this->resource->rejection_reason,
             'lat' => $this->resource->lat,
             'lng' => $this->resource->lng,
             'created_by' => $this->resource->relationLoaded('user')
