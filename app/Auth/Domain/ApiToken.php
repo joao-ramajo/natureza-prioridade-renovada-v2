@@ -2,6 +2,7 @@
 
 namespace App\Auth\Domain;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -14,16 +15,15 @@ use Illuminate\Database\Eloquent\Model;
  * @property \Carbon\Carbon $updated_at
  * @property \Carbon\Carbon $created_at
  */
+#[Fillable([
+    'name',
+    'token',
+    'active',
+    'last_used_at',
+    'expires_at',
+])]
 class ApiToken extends Model
 {
-    protected $fillable = [
-        'name',
-        'token',
-        'active',
-        'last_used_at',
-        'expires_at'
-    ];
-
     protected $casts = [
         'updated_at' => 'datetime',
         'created_at' => 'datetime',

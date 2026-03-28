@@ -3,7 +3,10 @@
 namespace App\CollectionPoint\Domain;
 
 use App\Auth\Domain\User;
+use Database\Factories\CollectionPointFactory;
 use Domain\ZipCode;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\UseFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -30,25 +33,25 @@ use Illuminate\Support\Str;
  * @property User $user
  * @property-read \Illuminate\Database\Eloquent\Collection|CollectionPointImage[] $images
  */
+#[UseFactory(CollectionPointFactory::class)]
+#[Fillable([
+    'uuid',
+    'user_id',
+    'name',
+    'status',
+    'category',
+    'address',
+    'city',
+    'state',
+    'zip_code',
+    'description',
+    'lat',
+    'lng',
+    'principal_image',
+])]
 class CollectionPoint extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        'uuid',
-        'user_id',
-        'name',
-        'status',
-        'category',
-        'address',
-        'city',
-        'state',
-        'zip_code',
-        'description',
-        'lat',
-        'lng',
-        'principal_image',
-    ];
 
     protected $casts = [
         'lat' => 'decimal:7',
