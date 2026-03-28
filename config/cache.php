@@ -19,6 +19,19 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Serializable Cached Classes
+    |--------------------------------------------------------------------------
+    |
+    | For improved security, Laravel 13 restricts which PHP objects may be
+    | unserialized from cache. Keep this disabled unless you intentionally
+    | cache object instances and have explicitly reviewed the allowed types.
+    |
+    */
+
+    'serializable_classes' => false,
+
+    /*
+    |--------------------------------------------------------------------------
     | Cache Stores
     |--------------------------------------------------------------------------
     |

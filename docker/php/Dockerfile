@@ -1,7 +1,7 @@
 # ========================
 # STAGE 1 – Composer
 # ========================
-FROM php:8.4-cli AS composer
+FROM php:8.5.3-cli AS composer
 
 # Instalar dependências do sistema
 RUN apt-get update && apt-get install -y \
@@ -38,7 +38,7 @@ RUN npm run build
 # ========================
 # STAGE 3 – PHP Final
 # ========================
-FROM php:8.4-fpm
+FROM php:8.5.3-fpm
 
 # Extensões necessárias
 RUN apt-get update && apt-get install -y \
