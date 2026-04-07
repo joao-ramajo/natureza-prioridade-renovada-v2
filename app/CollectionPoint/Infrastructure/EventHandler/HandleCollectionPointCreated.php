@@ -2,24 +2,30 @@
 
 namespace App\CollectionPoint\Infrastructure\EventHandler;
 
+use App\CollectionPoint\Application\UseCase\GeolocateCollectionPoint\GeolocateCollectionPoint;
+use App\CollectionPoint\Application\UseCase\GeolocateCollectionPoint\GeolocateCollectionPointInput;
 use App\CollectionPoint\Domain\Event\CollectionPointCreated;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Queue\Attributes\Backoff;
+use Illuminate\Queue\Attributes\DeleteWhenMissingModels;
+use Illuminate\Queue\Attributes\Queue;
+use Psr\Log\LoggerInterface;
 
+#[Queue('default')]
+#[Backoff(60, 300, 900)]
+#[DeleteWhenMissingModels]
 class HandleCollectionPointCreated implements ShouldQueue
 {
-    /**
-     * Create the event listener.
-     */
-    public function __construct()
-    {
-        //
-    }
+    public function __construct(
+        protected readonly GeolocateCollectionPoint $geolocateCollectionPoint,
+        protected readonly LoggerInterface $logger
+    ) {}
 
-    /**
-     * Handle the event.
-     */
     public function handle(CollectionPointCreated $event): void
     {
-        $cp = $event->collectionPoint;
+        $this->geolocateCollectionPoint->execute(
+            new GeolocateCollectionPointInput($event->collectionPointId)
+        );
+        $this->logger->info('Evento disparado');
     }
 }

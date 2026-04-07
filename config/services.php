@@ -18,6 +18,12 @@ return [
         'front_url' => env('FRONT_URL', 'http://localhost')
     ],
 
+    'geocoding' => [
+        'base_url' => env('GEOCODING_BASE_URL', 'https://nominatim.openstreetmap.org'),
+        'country_code' => env('GEOCODING_COUNTRY_CODE', 'br'),
+        'user_agent' => env('GEOCODING_USER_AGENT', env('APP_NAME', 'natureza-prioridade-renovada-5')),
+    ],
+
     'postmark' => [
         'key' => env('POSTMARK_API_KEY'),
     ],

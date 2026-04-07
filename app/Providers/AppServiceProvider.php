@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\CollectionPoint\Application\Contract\CollectionPointGeocoder;
+use App\CollectionPoint\Infrastructure\Geocoding\NominatimCollectionPointGeocoder;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -11,7 +13,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(CollectionPointGeocoder::class, NominatimCollectionPointGeocoder::class);
     }
 
     /**

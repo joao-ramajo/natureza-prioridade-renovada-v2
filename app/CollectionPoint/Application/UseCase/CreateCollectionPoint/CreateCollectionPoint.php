@@ -10,6 +10,7 @@ use App\CollectionPoint\Application\UseCase\UploadPrincipalImage\UploadPrincipal
 use App\CollectionPoint\Domain\Entity\CollectionPoint;
 use App\CollectionPoint\Domain\Entity\CollectionPointStatus;
 use Illuminate\Support\Str;
+use Psr\Log\LoggerInterface;
 
 class CreateCollectionPoint
 {
@@ -42,7 +43,7 @@ class CreateCollectionPoint
             $this->addCollectionPointImages->execute($collectionPoint, $input->imageTemporaryPaths);
         }
 
-        CollectionPointCreated::dispatch($collectionPoint);
+        CollectionPointCreated::dispatch($collectionPoint->id);
 
         return new CreateCollectionPointOutput(
             message: 'Ponto de coleta criado com sucesso.',

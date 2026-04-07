@@ -2,7 +2,6 @@
 
 namespace App\CollectionPoint\Domain\Event;
 
-use App\CollectionPoint\Domain\Entity\CollectionPoint;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Foundation\Events\Dispatchable;
@@ -18,7 +17,7 @@ class CollectionPointCreated
      * Create a new event instance.
      */
     public function __construct(
-        public readonly CollectionPoint $collectionPoint
+        public readonly int $collectionPointId
     ) {
     }
 

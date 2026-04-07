@@ -3,14 +3,17 @@
 use App\CollectionPoint\Domain\Entity\CollectionPointStatus;
 use App\CollectionPoint\Domain\Event\CollectionPointCreated;
 use App\CollectionPoint\Domain\Entity\CollectionPoint;
+use App\CollectionPoint\Infrastructure\Jobs\ProcessCollectionPointImageJob;
 use App\Auth\Domain\Entity\User;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Event;
+use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Storage;
 
 beforeEach(function () {
     Storage::fake('public');
     Event::fake();
+    Queue::fake();
 });
 
 test('usuario autenticado pode criar um ponto de coleta com sucesso', function () {
@@ -51,15 +54,13 @@ test('usuario autenticado pode criar um ponto de coleta com sucesso', function (
     expect($collectionPoint)->not()->toBeNull();
     expect($collectionPoint->name)->toBe($payload['name']);
     expect($collectionPoint->user_id)->toBe($user->id);
-    expect($collectionPoint->status)->toBe(CollectionPointStatus::PENDING);
+    expect($collectionPoint->status)->toBe(CollectionPointStatus::ACTIVE);
 
     Storage::disk('public')->assertExists($collectionPoint->principal_image);
-    foreach ($collectionPoint->images as $image) {
-        Storage::disk('public')->assertExists($image->getImagePath());
-    }
+    Queue::assertPushed(ProcessCollectionPointImageJob::class, 2);
 
     Event::assertDispatched(CollectionPointCreated::class, function ($event) use ($collectionPoint) {
-        return $event->collectionPoint->id === $collectionPoint->id;
+        return $event->collectionPointId === $collectionPoint->id;
     });
 });
 
